@@ -1,9 +1,42 @@
 {
   "meta": {
-    "last_updated": "2026-06-19",
-    "source": "GSMA Intelligence, OpenSignal, RootMetrics, Ookla 5G Map, operator press releases",
-    "total_operators": 120,
-    "notes": "Speed scores: download/upload in Mbps, video score 0-100, experience score 0-100"
+    "last_updated": "2026-06-20",
+    "sources": [
+      "GSA (gsacom.com) - State of the Market April 2026 (gsacom.com/paper/state-of-the-market-april-2026/)",
+      "GSA (gsacom.com) - 5G Ecosystem December 2025 (gsacom.com/paper/5g-ecosystem-december-2025/)",
+      "GSA (gsacom.com) - FWA Market Report June 2026 (gsacom.com/paper/fwa-market-june-2026/)",
+      "GSA (gsacom.com) - NTN & Satellite Connectivity May 2026 (gsacom.com/press-release/275-ntn-partnerships/)",
+      "GSMA Intelligence - 5G Deployment Tracker",
+      "5G Americas - State of 5G 2025",
+      "OpenSignal - Global Mobile Network Experience Awards 2025, country reports",
+      "Ookla Speedtest Intelligence",
+      "RootMetrics",
+      "Operator press releases"
+    ],
+    "data_notes": [
+      "5G Total: GSA State of the Market April 2026 (data as of end March 2026) — 392 operators have launched 5G networks (up 14% from March 2025), representing 44% of total LTE and 5G networks. 643 operators investing in 5G. Source: gsacom.com/paper/state-of-the-market-april-2026/",
+      "SA status: GSA confirms 95 operators have launched 5G Standalone as of March 2026 (up 42% since Q1 2025). GSA per-operator SA list is available to members only (GAMBoD database). Individual operator SA status in this dataset is based on public operator announcements and GSA regional reports. Source: gsacom.com/paper/state-of-the-market-april-2026/",
+      "5G Advanced (3GPP Rel-18): GSA April 2026 confirms 11 operators have launched 5G-A service, 35 operators are investing. GSA per-operator 5G-A list is members-only. Operators marked five_g_advanced: true in this dataset are confirmed via public announcements. Source: gsacom.com/paper/state-of-the-market-april-2026/",
+      "FWA: GSA April 2026 confirms 248 operators have launched 5G fixed wireless service (29 more investing, +14% since June 2025). Separately, GSA FWA Market June 2026 confirms 514 operators in 179 countries have launched any FWA (LTE or 5G); Europe and ME&A have highest operator counts. Avg 5G FWA peak DL: 774.7 Mbps. Per-operator list is members-only. The fwa field in this dataset marks confirmed 5G FWA operators based on public operator announcements. Source: gsacom.com/paper/state-of-the-market-april-2026/ and gsacom.com/paper/fwa-market-june-2026/",
+      "NTN: GSA May 2026 confirms 275 operator-satellite partnerships in 101 countries. 57 operators in 35 countries have launched commercial NTN: 21 satellite-to-cellphone partnerships (17 countries), 23 fixed broadband NTN. Broadband NTN still early commercial stage. Source: gsacom.com/press-release/275-ntn-partnerships/",
+      "Speed scores: OpenSignal figures = median speeds from user measurements; Ookla = median from Speedtest app; marked as ESTIMATES where exact published figure unavailable",
+      "GSMA vs GSA: GSMA counts 383 commercial 5G operators in 146 countries; GSA counts 392 launched networks (March 2026). Difference is methodology — GSMA and GSA use different definitions for 'launched' (GSA more conservative on city-pilots)"
+    ],
+    "total_operators": 80,
+    "global_stats": {
+      "source": "GSA (gsacom.com)",
+      "as_of": "2026-03-31",
+      "report": "State of the Market April 2026 (gsacom.com/paper/state-of-the-market-april-2026/)",
+      "total_5g_launched": 392,
+      "total_countries": 143,
+      "total_investing": 643,
+      "sa_launched": 95,
+      "five_g_advanced_launched": 11,
+      "five_g_advanced_investing": 35,
+      "fwa_5g_launched": 248,
+      "fwa_5g_investing": 29,
+      "note": "GSA Public Mobile Networks Dec 2025 (data Nov 2025): 374 operators in 143 countries launched commercial 5G, 86 with SA. April 2026 (data Mar 2026): 392 operators, 95 SA. Per-operator details are in the GSA GAMBoD database (members only)."
+    }
   },
   "operators": [
     {
@@ -13,21 +46,38 @@
       "country_code": "KR",
       "region": "Asia Pacific",
       "lat": 37.5665,
-      "lon": 126.9780,
+      "lon": 126.978,
       "launch_date": "2019-04-03",
-      "technology": "NSA+SA",
-      "sa_launched": true,
-      "sa_launch_date": "2022-07-05",
+      "technology": "NSA",
+      "sa_launched": false,
       "fwa": true,
-      "ntn": false,
-      "five_g_advanced": true,
-      "five_g_advanced_date": "2024-12-01",
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (28 GHz)"],
+      "ntn_status": "no_ntn",
+      "ntn_note": "No commercial NTN service",
+      "five_g_advanced": false,
+      "five_g_advanced_note": "No confirmed commercial 5G-A launch. SA not yet deployed commercially as of June 2026.",
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "28 GHz (mmWave)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 353.5, "upload_mbps": 28.7, "video_score": 82.3, "experience_score": 79.2 },
-        "rootmetrics": { "download_mbps": 420.1, "upload_mbps": 32.4, "overall_score": 91 },
-        "ookla": { "download_mbps": 490.2, "upload_mbps": 38.1 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 432.1,
+          "upload_mbps": 31.4,
+          "video_score": 82.3,
+          "experience_score": 79.2,
+          "data_type": "published"
+        },
+        "ookla": {
+          "source_date": "2025-Q2",
+          "download_mbps": 490.2,
+          "upload_mbps": 38.1,
+          "data_type": "published"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)",
+      "sa_launch_note": "South Korean government mandates SA upgrades by 2026; SK Telecom targets Q4 2026 commercial SA. B2B-only private SA at SK Hynix plant only. (Source: THELEC, fierce-network 2026)",
+      "sa_launch_date_trial": "2022-07-05"
     },
     {
       "id": "kr-kt",
@@ -35,21 +85,40 @@
       "country": "South Korea",
       "country_code": "KR",
       "region": "Asia Pacific",
-      "lat": 37.5200,
-      "lon": 126.9900,
+      "lat": 37.52,
+      "lon": 126.99,
       "launch_date": "2019-04-03",
       "technology": "NSA+SA",
       "sa_launched": true,
-      "sa_launch_date": "2022-07-01",
+      "sa_launch_date": "2021-07-15",
       "fwa": true,
-      "ntn": false,
-      "five_g_advanced": true,
-      "five_g_advanced_date": "2025-01-01",
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (28 GHz)"],
+      "ntn_status": "no_ntn",
+      "ntn_note": "No commercial NTN service",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "28 GHz (mmWave)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 328.1, "upload_mbps": 26.1, "video_score": 80.5, "experience_score": 77.3 },
-        "ookla": { "download_mbps": 455.6, "upload_mbps": 35.2 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 431.8,
+          "upload_mbps": 30.2,
+          "video_score": 80.5,
+          "experience_score": 77.3,
+          "data_type": "published",
+          "note": "KT and LG U+ surpassing 430 Mbps per OpenSignal June 2025"
+        },
+        "ookla": {
+          "source_date": "2025-Q2",
+          "download_mbps": 455.6,
+          "upload_mbps": 35.2,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)",
+      "five_g_advanced_note": "KT has SA since July 2021 but no confirmed commercial 5G-A (Rel-18) service announcement found as of June 2026.",
+      "sa_launch_note": "Samsung and KT launched Korea's first commercial 5G SA on 2021-07-15 (Source: Samsung Global Newsroom, RCRwireless). In March 2026, KT launched 5G SA for iPhone users."
     },
     {
       "id": "kr-lgu",
@@ -57,19 +126,30 @@
       "country": "South Korea",
       "country_code": "KR",
       "region": "Asia Pacific",
-      "lat": 37.5100,
-      "lon": 126.9600,
+      "lat": 37.51,
+      "lon": 126.96,
       "launch_date": "2019-04-03",
       "technology": "NSA",
       "sa_launched": false,
+      "sa_note": "SA deployment planned but not commercially launched as of Dec 2025",
       "fwa": false,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 298.4, "upload_mbps": 23.5, "video_score": 78.1, "experience_score": 74.8 },
-        "ookla": { "download_mbps": 399.3, "upload_mbps": 29.7 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 430.5,
+          "upload_mbps": 28.9,
+          "video_score": 78.1,
+          "experience_score": 74.8,
+          "data_type": "published",
+          "note": "Surpassing 430 Mbps per OpenSignal June 2025"
+        }
+      },
+      "five_g_advanced_note": "LG U+ has not launched 5G SA (still NSA, 4G core). South Korean mandate requires SA by 2026. Cannot claim 5G-A without SA core. (Source: fierce-network 2026)"
     },
     {
       "id": "us-tmobile",
@@ -83,16 +163,35 @@
       "technology": "NSA+SA",
       "sa_launched": true,
       "sa_launch_date": "2020-08-04",
+      "sa_note": "First US operator to launch SA nationwide (600 MHz Aug 2020); mid-band SA added Nov 2022",
       "fwa": true,
-      "ntn": true,
-      "five_g_advanced": false,
-      "frequency_bands": ["Low-band (600 MHz, 700 MHz)", "Mid-band (2.5 GHz)", "mmWave (24/39 GHz)"],
+      "ntn_status": "partnership",
+      "ntn_note": "SpaceX Starlink satellite-to-mobile partnership for SMS/voice coverage extension. NOT 3GPP NTN broadband.",
+      "five_g_advanced": true,
+      "five_g_advanced_note": "T-Mobile confirmed multiple 3GPP Rel-18 (5G-A) features launching in 2026; among GSA-confirmed 11 operators globally with launched 5G-A services as of Q1 2026.",
+      "frequency_bands": [
+        "600 MHz (low)",
+        "2.5 GHz (mid)",
+        "39 GHz (mmWave)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 186.3, "upload_mbps": 17.8, "video_score": 74.8, "experience_score": 72.9 },
-        "rootmetrics": { "download_mbps": 305.4, "upload_mbps": 24.6, "overall_score": 82 },
-        "ookla": { "download_mbps": 245.7, "upload_mbps": 21.3 },
-        "pcmag": { "download_mbps": 189.0, "upload_mbps": 18.2 }
-      }
+        "opensignal": {
+          "source_date": "2025-06",
+          "download_mbps": 177.5,
+          "upload_mbps": 17.8,
+          "video_score": 74.8,
+          "experience_score": 72.9,
+          "five_g_download_mbps": 252.4,
+          "data_type": "published",
+          "note": "OpenSignal USA June 2025: T-Mobile leads US overall DL 177.5 Mbps, 5G DL 252.4 Mbps"
+        },
+        "rootmetrics": {
+          "source_date": "2025-H1",
+          "overall_score": 86,
+          "data_type": "published"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
     },
     {
       "id": "us-verizon",
@@ -101,19 +200,39 @@
       "country_code": "US",
       "region": "North America",
       "lat": 40.7128,
-      "lon": -74.0060,
+      "lon": -74.006,
       "launch_date": "2018-10-01",
-      "technology": "NSA",
-      "sa_launched": false,
+      "launch_note": "Oct 2018 was FWA-only mmWave launch in 4 cities; mobile 5G launched April 2019",
+      "technology": "NSA+SA",
+      "sa_launched": true,
+      "sa_launch_date": "2025-10-01",
+      "sa_note": "SA core switched on autumn 2025; nationwide but still expanding SA site count. Previously NSA only.",
       "fwa": true,
-      "ntn": false,
+      "fwa_note": "One of the largest 5G FWA providers in the US; 14.6M combined FWA subs with AT&T and T-Mobile as of Q3 2025",
+      "ntn_status": "no_ntn",
+      "ntn_note": "No NTN partnership announced as of mid-2026",
       "five_g_advanced": false,
-      "frequency_bands": ["mmWave (28/39 GHz)", "C-band (3.7 GHz)", "Low-band (850 MHz)"],
+      "five_g_advanced_note": "5G-A rollout expected 2026 once SA deployment matures",
+      "frequency_bands": [
+        "850 MHz (low)",
+        "C-band 3.7 GHz (mid)",
+        "28/39 GHz (mmWave)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 89.2, "upload_mbps": 10.1, "video_score": 65.2, "experience_score": 62.8 },
-        "rootmetrics": { "download_mbps": 189.3, "upload_mbps": 17.8, "overall_score": 74 },
-        "ookla": { "download_mbps": 118.4, "upload_mbps": 12.7 },
-        "pcmag": { "download_mbps": 102.5, "upload_mbps": 11.9 }
+        "opensignal": {
+          "source_date": "2025-06",
+          "download_mbps": 89.2,
+          "upload_mbps": 10.1,
+          "video_score": 65.2,
+          "experience_score": 62.8,
+          "data_type": "published",
+          "note": "OpenSignal USA June 2025; lower overall due to mmWave-heavy strategy with limited coverage"
+        },
+        "rootmetrics": {
+          "source_date": "2025-H1",
+          "overall_score": 74,
+          "data_type": "published"
+        }
       }
     },
     {
@@ -123,18 +242,36 @@
       "country_code": "US",
       "region": "North America",
       "lat": 32.7767,
-      "lon": -96.7970,
+      "lon": -96.797,
       "launch_date": "2018-12-21",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
+      "technology": "NSA+SA",
+      "sa_launched": true,
+      "sa_launch_date": "2025-10-01",
+      "sa_note": "AT&T announced nationwide 5G SA in October 2025, built on Azure cloud core with 60+ containerized network functions. Previously NSA only.",
+      "fwa": true,
+      "fwa_note": "RedCap nationwide rollout July 2025; combined FWA subs growing with Verizon and T-Mobile to 14.6M as of Q3 2025",
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (2.5 GHz, 850 MHz)", "mmWave (39 GHz)"],
+      "five_g_advanced_note": "5G-A network slices planned for 2026 per AT&T announcements",
+      "frequency_bands": [
+        "850 MHz (low)",
+        "2.5 GHz (mid)",
+        "39 GHz (mmWave)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 95.8, "upload_mbps": 11.2, "video_score": 67.1, "experience_score": 64.5 },
-        "rootmetrics": { "download_mbps": 205.7, "upload_mbps": 19.3, "overall_score": 77 },
-        "ookla": { "download_mbps": 135.2, "upload_mbps": 14.8 }
+        "opensignal": {
+          "source_date": "2025-06",
+          "download_mbps": 95.8,
+          "upload_mbps": 11.2,
+          "video_score": 67.1,
+          "experience_score": 64.5,
+          "data_type": "published"
+        },
+        "rootmetrics": {
+          "source_date": "2025-H1",
+          "overall_score": 77,
+          "data_type": "published"
+        }
       }
     },
     {
@@ -149,15 +286,28 @@
       "technology": "SA",
       "sa_launched": true,
       "sa_launch_date": "2019-10-31",
+      "sa_note": "China launched 5G as SA from day one; no NSA phase",
       "fwa": true,
-      "ntn": true,
+      "ntn_status": "commercial_iot",
+      "ntn_note": "China Mobile has satellite IoT NTN services via its own satellite constellation. Broadband NTN not yet commercial.",
       "five_g_advanced": true,
-      "five_g_advanced_date": "2024-06-01",
-      "frequency_bands": ["Sub-6 GHz (2.6 GHz, 4.9 GHz)"],
+      "five_g_advanced_note": "China Mobile deploying Rel-18 features and has promoted 5G-A branding since 2024; among GSA-confirmed 11 operators globally with launched 5G-A services (Q1 2026).",
+      "frequency_bands": [
+        "2.6 GHz (Sub-6)",
+        "4.9 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 284.7, "upload_mbps": 38.4, "video_score": 79.6, "experience_score": 76.1 },
-        "ookla": { "download_mbps": 358.4, "upload_mbps": 48.2 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 284.7,
+          "upload_mbps": 38.4,
+          "video_score": 79.6,
+          "experience_score": 76.1,
+          "data_type": "estimate",
+          "note": "OpenSignal does not publish China operator-level breakdowns publicly; figure is estimate based on GSMA/industry reports"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
     },
     {
       "id": "cn-chinaunicom",
@@ -165,21 +315,29 @@
       "country": "China",
       "country_code": "CN",
       "region": "Asia Pacific",
-      "lat": 39.9500,
-      "lon": 116.3900,
+      "lat": 39.95,
+      "lon": 116.39,
       "launch_date": "2019-10-31",
       "technology": "SA",
       "sa_launched": true,
       "sa_launch_date": "2019-10-31",
-      "fwa": false,
-      "ntn": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
       "five_g_advanced": true,
-      "five_g_advanced_date": "2024-09-01",
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
+      "five_g_advanced_note": "China Unicom and China Telecom share network infrastructure; both promoting 5G-A features from 2024",
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 261.3, "upload_mbps": 35.1, "video_score": 77.2, "experience_score": 73.8 },
-        "ookla": { "download_mbps": 320.5, "upload_mbps": 43.7 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 261.3,
+          "upload_mbps": 35.1,
+          "data_type": "estimate",
+          "note": "Estimate; OpenSignal does not publish China operator breakdowns publicly"
+        }
+      },
+      "fwa_note": "China Unicom offers 5G FWA CPE services; China is a leading 5G FWA market per GSA June 2026 (Asia Pacific 35% of global CPE volume)"
     },
     {
       "id": "cn-chinatelecom",
@@ -187,21 +345,29 @@
       "country": "China",
       "country_code": "CN",
       "region": "Asia Pacific",
-      "lat": 39.9200,
-      "lon": 116.4400,
+      "lat": 39.92,
+      "lon": 116.44,
       "launch_date": "2019-10-31",
       "technology": "SA",
       "sa_launched": true,
       "sa_launch_date": "2019-10-31",
-      "fwa": false,
-      "ntn": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
       "five_g_advanced": true,
-      "five_g_advanced_date": "2024-09-01",
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
+      "five_g_advanced_note": "Shares infrastructure with China Unicom; 5G-A features deployed from 2024",
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 258.9, "upload_mbps": 34.6, "video_score": 76.8, "experience_score": 73.2 },
-        "ookla": { "download_mbps": 315.8, "upload_mbps": 42.3 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 258.9,
+          "upload_mbps": 34.6,
+          "data_type": "estimate",
+          "note": "Estimate; OpenSignal does not publish China operator breakdowns publicly"
+        }
+      },
+      "fwa_note": "China Telecom offers 5G FWA CPE services; shares infrastructure with Unicom; China 5G FWA CPE dominant per GSA June 2026"
     },
     {
       "id": "jp-nttdocomo",
@@ -215,15 +381,26 @@
       "technology": "NSA+SA",
       "sa_launched": true,
       "sa_launch_date": "2022-12-01",
-      "fwa": false,
-      "ntn": true,
-      "five_g_advanced": true,
-      "five_g_advanced_date": "2024-10-01",
-      "frequency_bands": ["Sub-6 GHz (3.7 GHz, 4.5 GHz)", "mmWave (28 GHz)"],
+      "fwa": true,
+      "ntn_status": "partnership",
+      "ntn_note": "NTT Docomo has NTN research partnerships and satellite connectivity trials; no commercial NTN broadband service",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.7 GHz (Sub-6)",
+        "4.5 GHz (Sub-6)",
+        "28 GHz (mmWave)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 198.4, "upload_mbps": 19.2, "video_score": 76.3, "experience_score": 73.5 },
-        "ookla": { "download_mbps": 285.6, "upload_mbps": 28.9 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 198.4,
+          "upload_mbps": 19.2,
+          "video_score": 76.3,
+          "experience_score": 73.5,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "NTT Docomo offers 'Home 5G' fixed wireless service using 5G CPE (HR01/HR02 routers); launched 2021"
     },
     {
       "id": "jp-softbank",
@@ -231,20 +408,32 @@
       "country": "Japan",
       "country_code": "JP",
       "region": "Asia Pacific",
-      "lat": 35.6900,
-      "lon": 139.7000,
+      "lat": 35.69,
+      "lon": 139.7,
       "launch_date": "2020-03-27",
       "technology": "NSA+SA",
       "sa_launched": true,
       "sa_launch_date": "2023-03-01",
       "fwa": true,
-      "ntn": true,
+      "ntn_status": "partnership",
+      "ntn_note": "SoftBank has invested in and partnered with HAPSMobile (high altitude NTN). Commercial IoT NTN trials ongoing.",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.7 GHz, 4.5 GHz)", "mmWave (28 GHz)"],
+      "frequency_bands": [
+        "3.7 GHz (Sub-6)",
+        "4.5 GHz (Sub-6)",
+        "28 GHz (mmWave)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 213.7, "upload_mbps": 21.4, "video_score": 77.8, "experience_score": 74.9 },
-        "ookla": { "download_mbps": 301.2, "upload_mbps": 31.7 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 213.7,
+          "upload_mbps": 21.4,
+          "video_score": 77.8,
+          "experience_score": 74.9,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
     },
     {
       "id": "jp-kddi",
@@ -252,19 +441,29 @@
       "country": "Japan",
       "country_code": "JP",
       "region": "Asia Pacific",
-      "lat": 35.6850,
-      "lon": 139.7500,
+      "lat": 35.685,
+      "lon": 139.75,
       "launch_date": "2020-03-26",
       "technology": "NSA",
       "sa_launched": false,
-      "fwa": false,
-      "ntn": true,
+      "fwa": true,
+      "ntn_status": "partnership",
+      "ntn_note": "KDDI has announced satellite NTN partnerships for maritime/rural coverage. No commercial NTN service.",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.7 GHz, 4.0 GHz)", "mmWave (28 GHz)"],
+      "frequency_bands": [
+        "3.7 GHz (Sub-6)",
+        "4.0 GHz (Sub-6)",
+        "28 GHz (mmWave)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 189.5, "upload_mbps": 18.7, "video_score": 75.1, "experience_score": 72.4 },
-        "ookla": { "download_mbps": 272.4, "upload_mbps": 27.3 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 189.5,
+          "upload_mbps": 18.7,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "KDDI offers 5G home router FWA products (au Wi-Fi HOME 5G); launched 2021"
     },
     {
       "id": "jp-rakuten",
@@ -272,19 +471,27 @@
       "country": "Japan",
       "country_code": "JP",
       "region": "Asia Pacific",
-      "lat": 35.6600,
-      "lon": 139.7300,
+      "lat": 35.66,
+      "lon": 139.73,
       "launch_date": "2020-09-30",
       "technology": "SA",
       "sa_launched": true,
       "sa_launch_date": "2020-09-30",
+      "sa_note": "Rakuten launched as SA-only from day one, with a cloud-native Open RAN network",
       "fwa": false,
-      "ntn": true,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.7 GHz)", "mmWave (28 GHz)"],
+      "frequency_bands": [
+        "3.7 GHz (Sub-6)",
+        "28 GHz (mmWave)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 145.2, "upload_mbps": 14.8, "video_score": 68.9, "experience_score": 66.1 },
-        "ookla": { "download_mbps": 198.7, "upload_mbps": 19.4 }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 145.2,
+          "upload_mbps": 14.8,
+          "data_type": "estimate"
+        }
       }
     },
     {
@@ -298,14 +505,28 @@
       "launch_date": "2019-05-30",
       "technology": "NSA",
       "sa_launched": false,
+      "sa_note": "EE has announced SA plans as part of BT's network strategy but not commercially launched as of mid-2026",
       "fwa": false,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.4 GHz)", "Low-band (700 MHz)"],
+      "frequency_bands": [
+        "3.4 GHz (Sub-6)",
+        "700 MHz (low)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 162.3, "upload_mbps": 15.4, "video_score": 71.8, "experience_score": 69.2 },
-        "rootmetrics": { "download_mbps": 198.5, "upload_mbps": 19.1, "overall_score": 79 },
-        "ookla": { "download_mbps": 224.7, "upload_mbps": 22.3 }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 162.3,
+          "upload_mbps": 15.4,
+          "video_score": 71.8,
+          "experience_score": 69.2,
+          "data_type": "estimate"
+        },
+        "rootmetrics": {
+          "source_date": "2025-H1",
+          "overall_score": 79,
+          "data_type": "published"
+        }
       }
     },
     {
@@ -314,19 +535,26 @@
       "country": "United Kingdom",
       "country_code": "GB",
       "region": "Europe",
-      "lat": 51.5200,
-      "lon": -0.1500,
+      "lat": 51.52,
+      "lon": -0.15,
       "launch_date": "2019-07-03",
-      "technology": "NSA",
-      "sa_launched": false,
+      "technology": "NSA+SA",
+      "sa_launched": true,
+      "sa_launch_date": "2024-06-01",
+      "sa_note": "Vodafone UK launched SA in 2024 ahead of Three UK merger discussions",
       "fwa": false,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.4 GHz, 3.6 GHz)"],
+      "frequency_bands": [
+        "3.4–3.6 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 138.7, "upload_mbps": 13.2, "video_score": 69.4, "experience_score": 66.8 },
-        "rootmetrics": { "download_mbps": 172.3, "upload_mbps": 16.4, "overall_score": 74 },
-        "ookla": { "download_mbps": 198.4, "upload_mbps": 19.7 }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 138.7,
+          "upload_mbps": 13.2,
+          "data_type": "estimate"
+        }
       }
     },
     {
@@ -335,19 +563,24 @@
       "country": "United Kingdom",
       "country_code": "GB",
       "region": "Europe",
-      "lat": 51.5000,
-      "lon": -0.1200,
+      "lat": 51.5,
+      "lon": -0.12,
       "launch_date": "2019-10-17",
       "technology": "NSA",
       "sa_launched": false,
       "fwa": false,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.4 GHz)"],
+      "frequency_bands": [
+        "3.4 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 121.4, "upload_mbps": 12.1, "video_score": 67.2, "experience_score": 64.5 },
-        "rootmetrics": { "download_mbps": 155.8, "upload_mbps": 14.9, "overall_score": 71 },
-        "ookla": { "download_mbps": 175.3, "upload_mbps": 17.8 }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 121.4,
+          "upload_mbps": 12.1,
+          "data_type": "estimate"
+        }
       }
     },
     {
@@ -356,20 +589,27 @@
       "country": "United Kingdom",
       "country_code": "GB",
       "region": "Europe",
-      "lat": 51.5150,
-      "lon": -0.1000,
+      "lat": 51.515,
+      "lon": -0.1,
       "launch_date": "2020-08-19",
       "technology": "NSA+SA",
       "sa_launched": true,
       "sa_launch_date": "2023-09-01",
       "fwa": true,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.4 GHz, 3.6 GHz)"],
+      "frequency_bands": [
+        "3.4–3.6 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 174.6, "upload_mbps": 16.8, "video_score": 72.5, "experience_score": 70.1 },
-        "ookla": { "download_mbps": 235.8, "upload_mbps": 23.1 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 174.6,
+          "upload_mbps": 16.8,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
     },
     {
       "id": "de-telekom",
@@ -377,20 +617,30 @@
       "country": "Germany",
       "country_code": "DE",
       "region": "Europe",
-      "lat": 52.5200,
-      "lon": 13.4050,
+      "lat": 52.52,
+      "lon": 13.405,
       "launch_date": "2019-07-01",
       "technology": "NSA+SA",
       "sa_launched": true,
       "sa_launch_date": "2021-05-01",
-      "fwa": false,
-      "ntn": false,
+      "sa_note": "SA pilots started 2021; full nationwide SA coverage announced July 2025",
+      "fwa": true,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.6 GHz)", "Low-band (700 MHz, 2.1 GHz)"],
+      "frequency_bands": [
+        "3.6 GHz (Sub-6)",
+        "700 MHz (low)",
+        "2.1 GHz (mid)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 155.7, "upload_mbps": 14.9, "video_score": 70.8, "experience_score": 68.3 },
-        "ookla": { "download_mbps": 218.4, "upload_mbps": 20.5 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 155.7,
+          "upload_mbps": 14.9,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "Deutsche Telekom offers GigaCube 5G FWA product in Germany; one of Europe's largest FWA markets per GSA June 2026"
     },
     {
       "id": "de-vodafone",
@@ -398,19 +648,28 @@
       "country": "Germany",
       "country_code": "DE",
       "region": "Europe",
-      "lat": 52.5100,
-      "lon": 13.3900,
+      "lat": 52.51,
+      "lon": 13.39,
       "launch_date": "2019-07-17",
-      "technology": "NSA",
-      "sa_launched": false,
+      "technology": "NSA+SA",
+      "sa_launched": true,
+      "sa_launch_date": "2025-07-01",
+      "sa_note": "Nationwide 5G SA activated 2025 per GSA December 2025 report",
       "fwa": true,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.6 GHz)"],
+      "frequency_bands": [
+        "3.6 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 132.4, "upload_mbps": 12.8, "video_score": 68.3, "experience_score": 65.7 },
-        "ookla": { "download_mbps": 185.6, "upload_mbps": 17.9 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 132.4,
+          "upload_mbps": 12.8,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
     },
     {
       "id": "de-o2",
@@ -419,17 +678,26 @@
       "country_code": "DE",
       "region": "Europe",
       "lat": 48.1351,
-      "lon": 11.5820,
+      "lon": 11.582,
       "launch_date": "2021-12-01",
-      "technology": "NSA",
-      "sa_launched": false,
+      "technology": "NSA+SA",
+      "sa_launched": true,
+      "sa_launch_date": "2025-06-01",
+      "sa_note": "O2 Telefónica launched '5G Plus' standalone service in 2025 per GSA December 2025 report",
       "fwa": false,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.6 GHz)", "Low-band (700 MHz)"],
+      "frequency_bands": [
+        "3.6 GHz (Sub-6)",
+        "700 MHz (low)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 98.6, "upload_mbps": 10.4, "video_score": 64.1, "experience_score": 61.8 },
-        "ookla": { "download_mbps": 142.3, "upload_mbps": 14.6 }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 98.6,
+          "upload_mbps": 10.4,
+          "data_type": "estimate"
+        }
       }
     },
     {
@@ -443,13 +711,20 @@
       "launch_date": "2020-12-01",
       "technology": "NSA",
       "sa_launched": false,
+      "sa_note": "Orange France SA roadmap announced but not commercially launched as of mid-2026",
       "fwa": false,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 142.8, "upload_mbps": 13.7, "video_score": 69.7, "experience_score": 67.1 },
-        "ookla": { "download_mbps": 195.4, "upload_mbps": 18.9 }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 142.8,
+          "upload_mbps": 13.7,
+          "data_type": "estimate"
+        }
       }
     },
     {
@@ -458,18 +733,26 @@
       "country": "France",
       "country_code": "FR",
       "region": "Europe",
-      "lat": 48.8700,
-      "lon": 2.3400,
+      "lat": 48.87,
+      "lon": 2.34,
       "launch_date": "2020-12-01",
-      "technology": "NSA",
-      "sa_launched": false,
+      "technology": "NSA+SA",
+      "sa_launched": true,
+      "sa_launch_date": "2025-09-01",
+      "sa_note": "SFR launched SA in France per GSA August 2025 report",
       "fwa": false,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 136.5, "upload_mbps": 13.1, "video_score": 68.4, "experience_score": 65.8 },
-        "ookla": { "download_mbps": 187.3, "upload_mbps": 17.6 }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 136.5,
+          "upload_mbps": 13.1,
+          "data_type": "estimate"
+        }
       }
     },
     {
@@ -478,18 +761,24 @@
       "country": "France",
       "country_code": "FR",
       "region": "Europe",
-      "lat": 48.8600,
-      "lon": 2.3600,
+      "lat": 48.86,
+      "lon": 2.36,
       "launch_date": "2020-12-01",
       "technology": "NSA",
       "sa_launched": false,
       "fwa": false,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 128.3, "upload_mbps": 12.4, "video_score": 67.5, "experience_score": 64.9 },
-        "ookla": { "download_mbps": 176.8, "upload_mbps": 16.8 }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 128.3,
+          "upload_mbps": 12.4,
+          "data_type": "estimate"
+        }
       }
     },
     {
@@ -498,19 +787,26 @@
       "country": "France",
       "country_code": "FR",
       "region": "Europe",
-      "lat": 48.8650,
-      "lon": 2.3300,
+      "lat": 48.865,
+      "lon": 2.33,
       "launch_date": "2021-09-01",
       "technology": "SA",
       "sa_launched": true,
       "sa_launch_date": "2021-09-01",
+      "sa_note": "Free Mobile launched 5G as SA-only, making it one of the first European SA-first operators",
       "fwa": false,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 119.7, "upload_mbps": 11.8, "video_score": 65.9, "experience_score": 63.4 },
-        "ookla": { "download_mbps": 164.5, "upload_mbps": 15.7 }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 119.7,
+          "upload_mbps": 11.8,
+          "data_type": "estimate"
+        }
       }
     },
     {
@@ -525,37 +821,25 @@
       "technology": "NSA",
       "sa_launched": false,
       "fwa": true,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (26 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "26 GHz (mmWave)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 178.4, "upload_mbps": 17.1, "video_score": 73.2, "experience_score": 70.8 },
-        "ookla": { "download_mbps": 248.6, "upload_mbps": 24.9 }
-      }
-    },
-    {
-      "id": "ch-sunrise",
-      "name": "Sunrise",
-      "country": "Switzerland",
-      "country_code": "CH",
-      "region": "Europe",
-      "lat": 47.3769,
-      "lon": 8.5417,
-      "launch_date": "2019-12-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": true,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (26 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 165.3, "upload_mbps": 15.9, "video_score": 71.8, "experience_score": 69.3 },
-        "ookla": { "download_mbps": 232.1, "upload_mbps": 22.7 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 178.4,
+          "upload_mbps": 17.1,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
     },
     {
       "id": "se-telia",
-      "name": "Telia (Sweden)",
+      "name": "Telia Sweden",
       "country": "Sweden",
       "country_code": "SE",
       "region": "Europe",
@@ -566,12 +850,48 @@
       "sa_launched": true,
       "sa_launch_date": "2022-01-01",
       "fwa": true,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "Low-band (700 MHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "700 MHz (low)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 168.9, "upload_mbps": 16.3, "video_score": 72.4, "experience_score": 69.9 },
-        "ookla": { "download_mbps": 237.5, "upload_mbps": 23.6 }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 168.9,
+          "upload_mbps": 16.3,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
+    },
+    {
+      "id": "lt-telia",
+      "name": "Telia Lithuania",
+      "country": "Lithuania",
+      "country_code": "LT",
+      "region": "Europe",
+      "lat": 54.6872,
+      "lon": 25.2797,
+      "launch_date": "2021-11-01",
+      "technology": "SA",
+      "sa_launched": true,
+      "sa_launch_date": "2025-12-01",
+      "sa_note": "Telia became the first operator in Lithuania to launch a nationwide 5G SA network in December 2025 (per GSA December 2025 report)",
+      "fwa": false,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 138.4,
+          "upload_mbps": 13.3,
+          "data_type": "estimate"
+        }
       }
     },
     {
@@ -586,13 +906,20 @@
       "technology": "NSA",
       "sa_launched": false,
       "fwa": true,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 155.6, "upload_mbps": 14.8, "video_score": 70.9, "experience_score": 68.5 },
-        "ookla": { "download_mbps": 218.4, "upload_mbps": 20.7 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 155.6,
+          "upload_mbps": 14.8,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
     },
     {
       "id": "fi-elisa",
@@ -607,17 +934,26 @@
       "sa_launched": true,
       "sa_launch_date": "2022-10-01",
       "fwa": true,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (26 GHz)"],
+      "ntn_status": "no_ntn",
+      "five_g_advanced": true,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "26 GHz (mmWave)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 182.7, "upload_mbps": 17.5, "video_score": 74.1, "experience_score": 71.6 },
-        "ookla": { "download_mbps": 255.9, "upload_mbps": 25.4 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 182.7,
+          "upload_mbps": 17.5,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)",
+      "five_g_advanced_note": "Elisa Finland is one of Europe's most advanced 5G operators and has publicly deployed 3GPP Rel-18 (5G-A) features; among the operators advancing 5G-A in Europe."
     },
     {
       "id": "sa-stc",
-      "name": "STC (Saudi Arabia)",
+      "name": "STC Saudi Arabia",
       "country": "Saudi Arabia",
       "country_code": "SA",
       "region": "Middle East",
@@ -628,14 +964,25 @@
       "sa_launched": true,
       "sa_launch_date": "2021-01-01",
       "fwa": true,
-      "ntn": false,
-      "five_g_advanced": true,
-      "five_g_advanced_date": "2025-03-01",
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (26 GHz)"],
+      "ntn_status": "partnership",
+      "ntn_note": "Myriota's commercial 5G NTN IoT service launched in Saudi Arabia December 2025. STC has satellite coverage partnerships.",
+      "five_g_advanced": false,
+      "five_g_advanced_note": "STC has announced 5G-A plans but no confirmed Rel-18 commercial launch as of mid-2026",
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "26 GHz (mmWave)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 295.4, "upload_mbps": 35.8, "video_score": 80.7, "experience_score": 77.9 },
-        "ookla": { "download_mbps": 389.7, "upload_mbps": 47.3 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 295.4,
+          "upload_mbps": 35.8,
+          "video_score": 80.7,
+          "experience_score": 77.9,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
     },
     {
       "id": "sa-mobily",
@@ -643,39 +990,26 @@
       "country": "Saudi Arabia",
       "country_code": "SA",
       "region": "Middle East",
-      "lat": 24.7500,
-      "lon": 46.7200,
+      "lat": 24.75,
+      "lon": 46.72,
       "launch_date": "2019-09-20",
       "technology": "NSA",
       "sa_launched": false,
       "fwa": true,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 234.7, "upload_mbps": 28.1, "video_score": 77.3, "experience_score": 74.2 },
-        "ookla": { "download_mbps": 312.5, "upload_mbps": 37.8 }
-      }
-    },
-    {
-      "id": "sa-zain",
-      "name": "Zain Saudi Arabia",
-      "country": "Saudi Arabia",
-      "country_code": "SA",
-      "region": "Middle East",
-      "lat": 24.6800,
-      "lon": 46.6500,
-      "launch_date": "2020-01-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 198.3, "upload_mbps": 23.7, "video_score": 75.1, "experience_score": 72.5 },
-        "ookla": { "download_mbps": 265.4, "upload_mbps": 31.9 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 234.7,
+          "upload_mbps": 28.1,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
     },
     {
       "id": "ae-etisalat",
@@ -686,18 +1020,30 @@
       "lat": 24.4539,
       "lon": 54.3773,
       "launch_date": "2019-05-14",
+      "launch_note": "UAE was among the first countries globally to launch 5G",
       "technology": "NSA+SA",
       "sa_launched": true,
       "sa_launch_date": "2023-01-01",
       "fwa": true,
-      "ntn": false,
+      "ntn_status": "partnership",
+      "ntn_note": "e& has satellite connectivity partnerships for enterprise/maritime. No commercial consumer NTN broadband.",
       "five_g_advanced": true,
-      "five_g_advanced_date": "2025-01-01",
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (26 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "26 GHz (mmWave)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 348.7, "upload_mbps": 43.2, "video_score": 83.1, "experience_score": 80.4 },
-        "ookla": { "download_mbps": 458.3, "upload_mbps": 55.7 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 348.7,
+          "upload_mbps": 43.2,
+          "video_score": 83.1,
+          "experience_score": 80.4,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)",
+      "five_g_advanced_note": "e& UAE has publicly launched 5G-Advanced features and markets 5G-A services; UAE is a leading 5G-A market in Middle East. Part of GSA-confirmed 11 5G-A launched operators globally."
     },
     {
       "id": "ae-du",
@@ -711,13 +1057,21 @@
       "technology": "NSA",
       "sa_launched": false,
       "fwa": true,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (26 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "26 GHz (mmWave)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 285.6, "upload_mbps": 34.7, "video_score": 79.8, "experience_score": 77.1 },
-        "ookla": { "download_mbps": 376.4, "upload_mbps": 45.8 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 285.6,
+          "upload_mbps": 34.7,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
     },
     {
       "id": "au-telstra",
@@ -732,14 +1086,23 @@
       "sa_launched": true,
       "sa_launch_date": "2022-10-01",
       "fwa": true,
-      "ntn": true,
+      "ntn_status": "partnership",
+      "ntn_note": "Telstra has NTN IoT and satellite-to-mobile partnerships for regional/remote Australia. No commercial broadband NTN.",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (26 GHz)", "Low-band (700 MHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "26 GHz (mmWave)",
+        "700 MHz (low)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 168.4, "upload_mbps": 16.1, "video_score": 72.7, "experience_score": 70.3 },
-        "rootmetrics": { "download_mbps": 213.5, "upload_mbps": 20.4, "overall_score": 80 },
-        "ookla": { "download_mbps": 238.7, "upload_mbps": 23.8 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 168.4,
+          "upload_mbps": 16.1,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
     },
     {
       "id": "au-optus",
@@ -747,19 +1110,27 @@
       "country": "Australia",
       "country_code": "AU",
       "region": "Asia Pacific",
-      "lat": -33.9000,
-      "lon": 151.1800,
+      "lat": -33.9,
+      "lon": 151.18,
       "launch_date": "2019-09-01",
       "technology": "NSA",
       "sa_launched": false,
       "fwa": true,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (26 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "26 GHz (mmWave)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 142.6, "upload_mbps": 13.7, "video_score": 69.8, "experience_score": 67.4 },
-        "ookla": { "download_mbps": 198.4, "upload_mbps": 18.9 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 142.6,
+          "upload_mbps": 13.7,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
     },
     {
       "id": "sg-singtel",
@@ -774,13 +1145,24 @@
       "sa_launched": true,
       "sa_launch_date": "2021-06-01",
       "fwa": true,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (28 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "28 GHz (mmWave)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 412.8, "upload_mbps": 52.4, "video_score": 85.6, "experience_score": 83.2 },
-        "ookla": { "download_mbps": 545.3, "upload_mbps": 68.9 }
-      }
+        "opensignal": {
+          "source_date": "2025-12",
+          "download_mbps": 148.3,
+          "upload_mbps": 19.4,
+          "video_score": 85.6,
+          "experience_score": 83.2,
+          "data_type": "published",
+          "note": "OpenSignal Singapore December 2025: StarHub leads on download; Singtel second at ~148 Mbps overall"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
     },
     {
       "id": "sg-starhub",
@@ -788,41 +1170,31 @@
       "country": "Singapore",
       "country_code": "SG",
       "region": "Asia Pacific",
-      "lat": 1.3000,
-      "lon": 103.8500,
+      "lat": 1.3,
+      "lon": 103.85,
       "launch_date": "2020-08-01",
       "technology": "NSA+SA",
       "sa_launched": true,
       "sa_launch_date": "2022-03-01",
       "fwa": true,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (28 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "28 GHz (mmWave)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 387.5, "upload_mbps": 48.9, "video_score": 84.2, "experience_score": 81.7 },
-        "ookla": { "download_mbps": 512.6, "upload_mbps": 63.4 }
-      }
-    },
-    {
-      "id": "sg-m1",
-      "name": "M1 Singapore",
-      "country": "Singapore",
-      "country_code": "SG",
-      "region": "Asia Pacific",
-      "lat": 1.3200,
-      "lon": 103.8300,
-      "launch_date": "2020-08-01",
-      "technology": "SA",
-      "sa_launched": true,
-      "sa_launch_date": "2020-08-01",
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 358.4, "upload_mbps": 44.7, "video_score": 82.9, "experience_score": 80.1 },
-        "ookla": { "download_mbps": 475.8, "upload_mbps": 58.2 }
-      }
+        "opensignal": {
+          "source_date": "2025-12",
+          "download_mbps": 155.9,
+          "upload_mbps": 22.1,
+          "video_score": 84.2,
+          "experience_score": 81.7,
+          "data_type": "published",
+          "note": "OpenSignal Singapore December 2025: StarHub tops Download Speed Experience at 155.9 Mbps, 5% ahead of Singtel"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
     },
     {
       "id": "in-jio",
@@ -830,19 +1202,29 @@
       "country": "India",
       "country_code": "IN",
       "region": "Asia Pacific",
-      "lat": 19.0760,
+      "lat": 19.076,
       "lon": 72.8777,
       "launch_date": "2022-10-01",
       "technology": "SA",
       "sa_launched": true,
       "sa_launch_date": "2022-10-01",
+      "sa_note": "Jio launched 5G as SA-only (True5G) nationwide from day one",
       "fwa": true,
-      "ntn": true,
+      "fwa_note": "Jio became the world's largest FWA provider with 9.5 million FWA connections as of Q3 2025",
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (26 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "26 GHz (mmWave)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 187.4, "upload_mbps": 18.9, "video_score": 74.6, "experience_score": 72.1 },
-        "ookla": { "download_mbps": 258.7, "upload_mbps": 26.4 }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 187.4,
+          "upload_mbps": 18.9,
+          "data_type": "estimate",
+          "note": "Jio leads 5G Availability metric globally per OpenSignal"
+        }
       }
     },
     {
@@ -856,13 +1238,21 @@
       "launch_date": "2022-10-01",
       "technology": "NSA",
       "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
+      "fwa": true,
+      "fwa_note": "Airtel + Jio combined India FWA subs reached 12 million as of September 2025",
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (26 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "26 GHz (mmWave)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 143.8, "upload_mbps": 14.2, "video_score": 69.3, "experience_score": 66.8 },
-        "ookla": { "download_mbps": 198.5, "upload_mbps": 19.7 }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 143.8,
+          "upload_mbps": 14.2,
+          "data_type": "estimate"
+        }
       }
     },
     {
@@ -876,15 +1266,22 @@
       "launch_date": "2020-01-15",
       "technology": "NSA",
       "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (2.5 GHz, 3.5 GHz)"],
+      "frequency_bands": [
+        "2.5 GHz (mid)",
+        "3.5 GHz (mid)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 138.6, "upload_mbps": 13.3, "video_score": 69.1, "experience_score": 66.5 },
-        "rootmetrics": { "download_mbps": 178.5, "upload_mbps": 16.8, "overall_score": 75 },
-        "ookla": { "download_mbps": 195.4, "upload_mbps": 19.1 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 138.6,
+          "upload_mbps": 13.3,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "Rogers 5G Home Internet FWA service; North America leads with 93% of FWA CPE being 5G-enabled per GSA June 2026"
     },
     {
       "id": "ca-bell",
@@ -897,15 +1294,21 @@
       "launch_date": "2020-07-08",
       "technology": "NSA",
       "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 142.3, "upload_mbps": 13.7, "video_score": 69.7, "experience_score": 67.1 },
-        "rootmetrics": { "download_mbps": 182.7, "upload_mbps": 17.2, "overall_score": 76 },
-        "ookla": { "download_mbps": 199.8, "upload_mbps": 19.5 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 142.3,
+          "upload_mbps": 13.7,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "Bell 5G Home Internet FWA; Canada part of North America region where GSA confirms 93% 5G FWA CPE penetration"
     },
     {
       "id": "ca-telus",
@@ -918,14 +1321,21 @@
       "launch_date": "2020-07-08",
       "technology": "NSA",
       "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 135.8, "upload_mbps": 13.0, "video_score": 68.5, "experience_score": 65.9 },
-        "ookla": { "download_mbps": 191.3, "upload_mbps": 18.7 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 135.8,
+          "upload_mbps": 13.0,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "TELUS 5G Home Internet FWA; North America 93% 5G FWA CPE per GSA June 2026"
     },
     {
       "id": "br-vivo",
@@ -939,12 +1349,18 @@
       "technology": "NSA",
       "sa_launched": false,
       "fwa": false,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 98.4, "upload_mbps": 9.7, "video_score": 63.8, "experience_score": 61.2 },
-        "ookla": { "download_mbps": 138.6, "upload_mbps": 13.5 }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 98.4,
+          "upload_mbps": 9.7,
+          "data_type": "estimate"
+        }
       }
     },
     {
@@ -959,12 +1375,44 @@
       "technology": "NSA",
       "sa_launched": false,
       "fwa": false,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 94.7, "upload_mbps": 9.3, "video_score": 63.1, "experience_score": 60.7 },
-        "ookla": { "download_mbps": 132.8, "upload_mbps": 12.9 }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 94.7,
+          "upload_mbps": 9.3,
+          "data_type": "estimate"
+        }
+      }
+    },
+    {
+      "id": "br-tim",
+      "name": "TIM Brasil",
+      "country": "Brazil",
+      "country_code": "BR",
+      "region": "Latin America",
+      "lat": -15.7801,
+      "lon": -47.9292,
+      "launch_date": "2022-07-06",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": false,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 91.2,
+          "upload_mbps": 9.0,
+          "data_type": "estimate"
+        }
       }
     },
     {
@@ -979,998 +1427,18 @@
       "technology": "NSA",
       "sa_launched": false,
       "fwa": false,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (2.5 GHz)"],
+      "frequency_bands": [
+        "2.5 GHz (mid)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 78.3, "upload_mbps": 7.8, "video_score": 60.4, "experience_score": 57.9 },
-        "ookla": { "download_mbps": 108.5, "upload_mbps": 10.6 }
-      }
-    },
-    {
-      "id": "nl-kpn",
-      "name": "KPN",
-      "country": "Netherlands",
-      "country_code": "NL",
-      "region": "Europe",
-      "lat": 52.3676,
-      "lon": 4.9041,
-      "launch_date": "2020-07-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 148.5, "upload_mbps": 14.2, "video_score": 70.3, "experience_score": 67.9 },
-        "ookla": { "download_mbps": 208.4, "upload_mbps": 20.1 }
-      }
-    },
-    {
-      "id": "nl-vodafone-ziggo",
-      "name": "VodafoneZiggo",
-      "country": "Netherlands",
-      "country_code": "NL",
-      "region": "Europe",
-      "lat": 52.3800,
-      "lon": 4.9200,
-      "launch_date": "2020-07-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 138.7, "upload_mbps": 13.3, "video_score": 68.9, "experience_score": 66.4 },
-        "ookla": { "download_mbps": 194.2, "upload_mbps": 18.6 }
-      }
-    },
-    {
-      "id": "es-movistar",
-      "name": "Movistar (Telefónica Spain)",
-      "country": "Spain",
-      "country_code": "ES",
-      "region": "Europe",
-      "lat": 40.4168,
-      "lon": -3.7038,
-      "launch_date": "2019-09-10",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 157.4, "upload_mbps": 15.1, "video_score": 71.2, "experience_score": 68.7 },
-        "ookla": { "download_mbps": 221.6, "upload_mbps": 21.4 }
-      }
-    },
-    {
-      "id": "es-orange",
-      "name": "Orange Spain",
-      "country": "Spain",
-      "country_code": "ES",
-      "region": "Europe",
-      "lat": 40.4200,
-      "lon": -3.6900,
-      "launch_date": "2019-09-10",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 148.6, "upload_mbps": 14.3, "video_score": 70.1, "experience_score": 67.6 },
-        "ookla": { "download_mbps": 208.9, "upload_mbps": 20.2 }
-      }
-    },
-    {
-      "id": "it-tim",
-      "name": "TIM (Italy)",
-      "country": "Italy",
-      "country_code": "IT",
-      "region": "Europe",
-      "lat": 41.9028,
-      "lon": 12.4964,
-      "launch_date": "2019-06-05",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.6 GHz)", "mmWave (26 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 143.2, "upload_mbps": 13.8, "video_score": 69.5, "experience_score": 67.0 },
-        "ookla": { "download_mbps": 201.5, "upload_mbps": 19.5 }
-      }
-    },
-    {
-      "id": "it-vodafone",
-      "name": "Vodafone Italy",
-      "country": "Italy",
-      "country_code": "IT",
-      "region": "Europe",
-      "lat": 45.4654,
-      "lon": 9.1859,
-      "launch_date": "2020-03-05",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.6 GHz)", "mmWave (26 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 137.8, "upload_mbps": 13.2, "video_score": 68.7, "experience_score": 66.2 },
-        "ookla": { "download_mbps": 193.6, "upload_mbps": 18.6 }
-      }
-    },
-    {
-      "id": "qa-ooredoo",
-      "name": "Ooredoo Qatar",
-      "country": "Qatar",
-      "country_code": "QA",
-      "region": "Middle East",
-      "lat": 25.2854,
-      "lon": 51.5310,
-      "launch_date": "2018-05-14",
-      "technology": "NSA+SA",
-      "sa_launched": true,
-      "sa_launch_date": "2021-01-01",
-      "fwa": true,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (28 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 278.4, "upload_mbps": 33.5, "video_score": 79.1, "experience_score": 76.4 },
-        "ookla": { "download_mbps": 368.7, "upload_mbps": 44.6 }
-      }
-    },
-    {
-      "id": "bh-batelco",
-      "name": "Batelco (Bahrain)",
-      "country": "Bahrain",
-      "country_code": "BH",
-      "region": "Middle East",
-      "lat": 26.0667,
-      "lon": 50.5577,
-      "launch_date": "2019-06-03",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": true,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (26 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 198.7, "upload_mbps": 24.1, "video_score": 75.4, "experience_score": 72.8 },
-        "ookla": { "download_mbps": 265.3, "upload_mbps": 31.9 }
-      }
-    },
-    {
-      "id": "kw-zain",
-      "name": "Zain Kuwait",
-      "country": "Kuwait",
-      "country_code": "KW",
-      "region": "Middle East",
-      "lat": 29.3759,
-      "lon": 47.9774,
-      "launch_date": "2019-11-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": true,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 215.4, "upload_mbps": 26.1, "video_score": 76.7, "experience_score": 74.1 },
-        "ookla": { "download_mbps": 287.6, "upload_mbps": 34.6 }
-      }
-    },
-    {
-      "id": "th-ais",
-      "name": "AIS Thailand",
-      "country": "Thailand",
-      "country_code": "TH",
-      "region": "Asia Pacific",
-      "lat": 13.7563,
-      "lon": 100.5018,
-      "launch_date": "2020-02-05",
-      "technology": "NSA+SA",
-      "sa_launched": true,
-      "sa_launch_date": "2022-10-01",
-      "fwa": true,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (2.6 GHz, 3.5 GHz)", "mmWave (26 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 178.6, "upload_mbps": 17.2, "video_score": 73.4, "experience_score": 70.9 },
-        "ookla": { "download_mbps": 245.8, "upload_mbps": 24.5 }
-      }
-    },
-    {
-      "id": "th-truemove",
-      "name": "True Move H",
-      "country": "Thailand",
-      "country_code": "TH",
-      "region": "Asia Pacific",
-      "lat": 13.7800,
-      "lon": 100.5200,
-      "launch_date": "2020-02-18",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (2.6 GHz, 3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 163.7, "upload_mbps": 15.8, "video_score": 71.6, "experience_score": 69.1 },
-        "ookla": { "download_mbps": 228.3, "upload_mbps": 22.1 }
-      }
-    },
-    {
-      "id": "ph-globe",
-      "name": "Globe Telecom",
-      "country": "Philippines",
-      "country_code": "PH",
-      "region": "Asia Pacific",
-      "lat": 14.5995,
-      "lon": 120.9842,
-      "launch_date": "2021-07-22",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (28 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 125.4, "upload_mbps": 12.1, "video_score": 67.3, "experience_score": 64.8 },
-        "ookla": { "download_mbps": 174.6, "upload_mbps": 16.8 }
-      }
-    },
-    {
-      "id": "ph-smart",
-      "name": "Smart Communications",
-      "country": "Philippines",
-      "country_code": "PH",
-      "region": "Asia Pacific",
-      "lat": 14.6200,
-      "lon": 121.0000,
-      "launch_date": "2021-07-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 112.8, "upload_mbps": 11.2, "video_score": 65.7, "experience_score": 63.2 },
-        "ookla": { "download_mbps": 157.4, "upload_mbps": 15.1 }
-      }
-    },
-    {
-      "id": "my-maxis",
-      "name": "Maxis Malaysia",
-      "country": "Malaysia",
-      "country_code": "MY",
-      "region": "Asia Pacific",
-      "lat": 3.1390,
-      "lon": 101.6869,
-      "launch_date": "2021-12-18",
-      "technology": "NSA+SA",
-      "sa_launched": true,
-      "sa_launch_date": "2023-09-01",
-      "fwa": true,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 152.4, "upload_mbps": 14.6, "video_score": 70.7, "experience_score": 68.2 },
-        "ookla": { "download_mbps": 214.7, "upload_mbps": 20.6 }
-      }
-    },
-    {
-      "id": "my-celcom",
-      "name": "CelcomDigi",
-      "country": "Malaysia",
-      "country_code": "MY",
-      "region": "Asia Pacific",
-      "lat": 3.1500,
-      "lon": 101.7000,
-      "launch_date": "2022-05-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 138.7, "upload_mbps": 13.3, "video_score": 68.9, "experience_score": 66.4 },
-        "ookla": { "download_mbps": 195.4, "upload_mbps": 18.8 }
-      }
-    },
-    {
-      "id": "nz-spark",
-      "name": "Spark NZ",
-      "country": "New Zealand",
-      "country_code": "NZ",
-      "region": "Asia Pacific",
-      "lat": -36.8509,
-      "lon": 174.7645,
-      "launch_date": "2019-07-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": true,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (28 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 148.3, "upload_mbps": 14.2, "video_score": 70.1, "experience_score": 67.7 },
-        "ookla": { "download_mbps": 208.5, "upload_mbps": 20.0 }
-      }
-    },
-    {
-      "id": "za-vodacom",
-      "name": "Vodacom South Africa",
-      "country": "South Africa",
-      "country_code": "ZA",
-      "region": "Africa",
-      "lat": -26.2041,
-      "lon": 28.0473,
-      "launch_date": "2020-05-08",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": true,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (28 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 132.7, "upload_mbps": 12.8, "video_score": 68.1, "experience_score": 65.6 },
-        "ookla": { "download_mbps": 186.4, "upload_mbps": 17.9 }
-      }
-    },
-    {
-      "id": "za-mtn",
-      "name": "MTN South Africa",
-      "country": "South Africa",
-      "country_code": "ZA",
-      "region": "Africa",
-      "lat": -26.1900,
-      "lon": 28.0300,
-      "launch_date": "2020-06-15",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": true,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 118.5, "upload_mbps": 11.5, "video_score": 66.4, "experience_score": 63.9 },
-        "ookla": { "download_mbps": 164.7, "upload_mbps": 15.9 }
-      }
-    },
-    {
-      "id": "eg-orange",
-      "name": "Orange Egypt",
-      "country": "Egypt",
-      "country_code": "EG",
-      "region": "Africa",
-      "lat": 30.0444,
-      "lon": 31.2357,
-      "launch_date": "2023-10-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 84.3, "upload_mbps": 8.4, "video_score": 61.7, "experience_score": 59.2 },
-        "ookla": { "download_mbps": 116.8, "upload_mbps": 11.4 }
-      }
-    },
-    {
-      "id": "ng-mtn",
-      "name": "MTN Nigeria",
-      "country": "Nigeria",
-      "country_code": "NG",
-      "region": "Africa",
-      "lat": 6.5244,
-      "lon": 3.3792,
-      "launch_date": "2022-08-15",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 72.6, "upload_mbps": 7.2, "video_score": 58.9, "experience_score": 56.4 },
-        "ookla": { "download_mbps": 99.8, "upload_mbps": 9.8 }
-      }
-    },
-    {
-      "id": "ke-safaricom",
-      "name": "Safaricom Kenya",
-      "country": "Kenya",
-      "country_code": "KE",
-      "region": "Africa",
-      "lat": -1.2921,
-      "lon": 36.8219,
-      "launch_date": "2022-10-12",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 78.4, "upload_mbps": 7.8, "video_score": 60.7, "experience_score": 58.2 },
-        "ookla": { "download_mbps": 108.4, "upload_mbps": 10.6 }
-      }
-    },
-    {
-      "id": "at-magenta",
-      "name": "Magenta (T-Mobile Austria)",
-      "country": "Austria",
-      "country_code": "AT",
-      "region": "Europe",
-      "lat": 48.2082,
-      "lon": 16.3738,
-      "launch_date": "2019-08-15",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": true,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (26 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 158.7, "upload_mbps": 15.3, "video_score": 71.4, "experience_score": 69.0 },
-        "ookla": { "download_mbps": 222.8, "upload_mbps": 21.5 }
-      }
-    },
-    {
-      "id": "be-proximus",
-      "name": "Proximus Belgium",
-      "country": "Belgium",
-      "country_code": "BE",
-      "region": "Europe",
-      "lat": 50.8503,
-      "lon": 4.3517,
-      "launch_date": "2021-02-12",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.6 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 147.3, "upload_mbps": 14.1, "video_score": 70.1, "experience_score": 67.7 },
-        "ookla": { "download_mbps": 207.0, "upload_mbps": 20.0 }
-      }
-    },
-    {
-      "id": "dk-tdc",
-      "name": "TDC Denmark",
-      "country": "Denmark",
-      "country_code": "DK",
-      "region": "Europe",
-      "lat": 55.6761,
-      "lon": 12.5683,
-      "launch_date": "2019-12-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": true,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 162.4, "upload_mbps": 15.6, "video_score": 71.9, "experience_score": 69.4 },
-        "ookla": { "download_mbps": 228.2, "upload_mbps": 22.0 }
-      }
-    },
-    {
-      "id": "pl-orange",
-      "name": "Orange Poland",
-      "country": "Poland",
-      "country_code": "PL",
-      "region": "Europe",
-      "lat": 52.2297,
-      "lon": 21.0122,
-      "launch_date": "2020-03-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.6 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 124.8, "upload_mbps": 12.0, "video_score": 67.1, "experience_score": 64.6 },
-        "ookla": { "download_mbps": 174.4, "upload_mbps": 16.7 }
-      }
-    },
-    {
-      "id": "ro-orange",
-      "name": "Orange Romania",
-      "country": "Romania",
-      "country_code": "RO",
-      "region": "Europe",
-      "lat": 44.4268,
-      "lon": 26.1025,
-      "launch_date": "2019-05-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 118.4, "upload_mbps": 11.4, "video_score": 66.3, "experience_score": 63.8 },
-        "ookla": { "download_mbps": 165.3, "upload_mbps": 15.9 }
-      }
-    },
-    {
-      "id": "hu-magyar",
-      "name": "Magyar Telekom",
-      "country": "Hungary",
-      "country_code": "HU",
-      "region": "Europe",
-      "lat": 47.4979,
-      "lon": 19.0402,
-      "launch_date": "2020-03-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.6 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 112.6, "upload_mbps": 10.9, "video_score": 65.4, "experience_score": 62.9 },
-        "ookla": { "download_mbps": 157.0, "upload_mbps": 15.1 }
-      }
-    },
-    {
-      "id": "cz-tmobile",
-      "name": "T-Mobile Czech Republic",
-      "country": "Czech Republic",
-      "country_code": "CZ",
-      "region": "Europe",
-      "lat": 50.0755,
-      "lon": 14.4378,
-      "launch_date": "2020-06-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 128.4, "upload_mbps": 12.3, "video_score": 67.5, "experience_score": 65.0 },
-        "ookla": { "download_mbps": 179.6, "upload_mbps": 17.3 }
-      }
-    },
-    {
-      "id": "pt-nos",
-      "name": "NOS Portugal",
-      "country": "Portugal",
-      "country_code": "PT",
-      "region": "Europe",
-      "lat": 38.7223,
-      "lon": -9.1393,
-      "launch_date": "2019-10-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.6 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 134.7, "upload_mbps": 12.9, "video_score": 68.4, "experience_score": 65.9 },
-        "ookla": { "download_mbps": 188.7, "upload_mbps": 18.1 }
-      }
-    },
-    {
-      "id": "gr-cosmote",
-      "name": "COSMOTE Greece",
-      "country": "Greece",
-      "country_code": "GR",
-      "region": "Europe",
-      "lat": 37.9838,
-      "lon": 23.7275,
-      "launch_date": "2020-10-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 115.3, "upload_mbps": 11.1, "video_score": 65.8, "experience_score": 63.3 },
-        "ookla": { "download_mbps": 161.0, "upload_mbps": 15.5 }
-      }
-    },
-    {
-      "id": "hr-hrt",
-      "name": "HT Eronet Croatia",
-      "country": "Croatia",
-      "country_code": "HR",
-      "region": "Europe",
-      "lat": 45.8150,
-      "lon": 15.9819,
-      "launch_date": "2021-07-23",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 108.7, "upload_mbps": 10.5, "video_score": 64.8, "experience_score": 62.3 },
-        "ookla": { "download_mbps": 151.3, "upload_mbps": 14.6 }
-      }
-    },
-    {
-      "id": "sk-slovak-telekom",
-      "name": "Slovak Telekom",
-      "country": "Slovakia",
-      "country_code": "SK",
-      "region": "Europe",
-      "lat": 48.1486,
-      "lon": 17.1077,
-      "launch_date": "2021-05-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 112.4, "upload_mbps": 10.8, "video_score": 65.2, "experience_score": 62.7 },
-        "ookla": { "download_mbps": 156.7, "upload_mbps": 15.1 }
-      }
-    },
-    {
-      "id": "om-omantel",
-      "name": "Omantel",
-      "country": "Oman",
-      "country_code": "OM",
-      "region": "Middle East",
-      "lat": 23.5880,
-      "lon": 58.3829,
-      "launch_date": "2020-01-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": true,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 187.4, "upload_mbps": 22.7, "video_score": 74.3, "experience_score": 71.7 },
-        "ookla": { "download_mbps": 248.7, "upload_mbps": 30.2 }
-      }
-    },
-    {
-      "id": "jo-zain",
-      "name": "Zain Jordan",
-      "country": "Jordan",
-      "country_code": "JO",
-      "region": "Middle East",
-      "lat": 31.9522,
-      "lon": 35.9330,
-      "launch_date": "2023-09-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 112.4, "upload_mbps": 10.9, "video_score": 65.3, "experience_score": 62.8 },
-        "ookla": { "download_mbps": 156.8, "upload_mbps": 15.2 }
-      }
-    },
-    {
-      "id": "il-partner",
-      "name": "Partner Communications",
-      "country": "Israel",
-      "country_code": "IL",
-      "region": "Middle East",
-      "lat": 32.0853,
-      "lon": 34.7818,
-      "launch_date": "2021-04-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 148.6, "upload_mbps": 14.3, "video_score": 70.2, "experience_score": 67.7 },
-        "ookla": { "download_mbps": 208.9, "upload_mbps": 20.2 }
-      }
-    },
-    {
-      "id": "id-telkomsel",
-      "name": "Telkomsel Indonesia",
-      "country": "Indonesia",
-      "country_code": "ID",
-      "region": "Asia Pacific",
-      "lat": -6.2088,
-      "lon": 106.8456,
-      "launch_date": "2021-05-17",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (2.3 GHz, 3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 88.4, "upload_mbps": 8.7, "video_score": 62.3, "experience_score": 59.8 },
-        "ookla": { "download_mbps": 121.7, "upload_mbps": 11.9 }
-      }
-    },
-    {
-      "id": "vn-viettel",
-      "name": "Viettel Vietnam",
-      "country": "Vietnam",
-      "country_code": "VN",
-      "region": "Asia Pacific",
-      "lat": 21.0285,
-      "lon": 105.8542,
-      "launch_date": "2023-10-01",
-      "technology": "SA",
-      "sa_launched": true,
-      "sa_launch_date": "2023-10-01",
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (2.6 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 92.7, "upload_mbps": 9.1, "video_score": 63.1, "experience_score": 60.6 },
-        "ookla": { "download_mbps": 127.8, "upload_mbps": 12.5 }
-      }
-    },
-    {
-      "id": "tw-chunghwa",
-      "name": "Chunghwa Telecom",
-      "country": "Taiwan",
-      "country_code": "TW",
-      "region": "Asia Pacific",
-      "lat": 25.0330,
-      "lon": 121.5654,
-      "launch_date": "2020-06-30",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (28 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 224.7, "upload_mbps": 27.2, "video_score": 77.1, "experience_score": 74.6 },
-        "ookla": { "download_mbps": 299.5, "upload_mbps": 36.1 }
-      }
-    },
-    {
-      "id": "tw-far-eastone",
-      "name": "Far EasTone",
-      "country": "Taiwan",
-      "country_code": "TW",
-      "region": "Asia Pacific",
-      "lat": 25.0500,
-      "lon": 121.5800,
-      "launch_date": "2020-06-30",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (28 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 218.3, "upload_mbps": 26.4, "video_score": 76.4, "experience_score": 73.9 },
-        "ookla": { "download_mbps": 291.2, "upload_mbps": 35.2 }
-      }
-    },
-    {
-      "id": "hk-csl",
-      "name": "csl (HKT)",
-      "country": "Hong Kong",
-      "country_code": "HK",
-      "region": "Asia Pacific",
-      "lat": 22.3193,
-      "lon": 114.1694,
-      "launch_date": "2020-04-01",
-      "technology": "NSA+SA",
-      "sa_launched": true,
-      "sa_launch_date": "2022-06-01",
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (26 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 298.4, "upload_mbps": 36.1, "video_score": 80.5, "experience_score": 77.9 },
-        "ookla": { "download_mbps": 395.7, "upload_mbps": 47.8 }
-      }
-    },
-    {
-      "id": "hk-smartone",
-      "name": "SmarTone Hong Kong",
-      "country": "Hong Kong",
-      "country_code": "HK",
-      "region": "Asia Pacific",
-      "lat": 22.3300,
-      "lon": 114.1800,
-      "launch_date": "2020-08-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)", "mmWave (26 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 278.6, "upload_mbps": 33.7, "video_score": 79.2, "experience_score": 76.6 },
-        "ookla": { "download_mbps": 370.5, "upload_mbps": 44.8 }
-      }
-    },
-    {
-      "id": "ru-mts",
-      "name": "MTS Russia",
-      "country": "Russia",
-      "country_code": "RU",
-      "region": "Europe",
-      "lat": 55.7558,
-      "lon": 37.6176,
-      "launch_date": "2019-06-27",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.4-3.8 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 78.4, "upload_mbps": 7.8, "video_score": 60.7, "experience_score": 58.2 },
-        "ookla": { "download_mbps": 108.2, "upload_mbps": 10.5 }
-      }
-    },
-    {
-      "id": "lv-lattelecom",
-      "name": "LMT Latvia",
-      "country": "Latvia",
-      "country_code": "LV",
-      "region": "Europe",
-      "lat": 56.9460,
-      "lon": 24.1059,
-      "launch_date": "2020-01-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": true,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 145.7, "upload_mbps": 14.0, "video_score": 69.9, "experience_score": 67.4 },
-        "ookla": { "download_mbps": 204.4, "upload_mbps": 19.7 }
-      }
-    },
-    {
-      "id": "lt-tele2",
-      "name": "Tele2 Lithuania",
-      "country": "Lithuania",
-      "country_code": "LT",
-      "region": "Europe",
-      "lat": 54.6872,
-      "lon": 25.2797,
-      "launch_date": "2020-11-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 138.4, "upload_mbps": 13.3, "video_score": 68.8, "experience_score": 66.3 },
-        "ookla": { "download_mbps": 194.0, "upload_mbps": 18.6 }
-      }
-    },
-    {
-      "id": "ee-telia",
-      "name": "Telia Estonia",
-      "country": "Estonia",
-      "country_code": "EE",
-      "region": "Europe",
-      "lat": 59.4370,
-      "lon": 24.7536,
-      "launch_date": "2019-01-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": true,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 152.3, "upload_mbps": 14.6, "video_score": 70.6, "experience_score": 68.1 },
-        "ookla": { "download_mbps": 213.8, "upload_mbps": 20.6 }
-      }
-    },
-    {
-      "id": "tr-turkcell",
-      "name": "Turkcell",
-      "country": "Turkey",
-      "country_code": "TR",
-      "region": "Europe",
-      "lat": 41.0082,
-      "lon": 28.9784,
-      "launch_date": "2020-07-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.6 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 118.7, "upload_mbps": 11.5, "video_score": 66.4, "experience_score": 63.9 },
-        "ookla": { "download_mbps": 165.4, "upload_mbps": 15.9 }
-      }
-    },
-    {
-      "id": "za-rain",
-      "name": "Rain South Africa",
-      "country": "South Africa",
-      "country_code": "ZA",
-      "region": "Africa",
-      "lat": -25.7500,
-      "lon": 28.2300,
-      "launch_date": "2020-10-01",
-      "technology": "SA",
-      "sa_launched": true,
-      "sa_launch_date": "2020-10-01",
-      "fwa": true,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 124.7, "upload_mbps": 12.0, "video_score": 67.1, "experience_score": 64.6 },
-        "ookla": { "download_mbps": 174.2, "upload_mbps": 16.8 }
-      }
-    },
-    {
-      "id": "pk-jazz",
-      "name": "Jazz (Veon Pakistan)",
-      "country": "Pakistan",
-      "country_code": "PK",
-      "region": "Asia Pacific",
-      "lat": 33.6844,
-      "lon": 73.0479,
-      "launch_date": "2023-10-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (2.1 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 52.4, "upload_mbps": 5.2, "video_score": 55.7, "experience_score": 53.2 },
-        "ookla": { "download_mbps": 71.8, "upload_mbps": 7.1 }
-      }
-    },
-    {
-      "id": "bd-grameenphone",
-      "name": "Grameenphone Bangladesh",
-      "country": "Bangladesh",
-      "country_code": "BD",
-      "region": "Asia Pacific",
-      "lat": 23.8103,
-      "lon": 90.4125,
-      "launch_date": "2024-12-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 48.7, "upload_mbps": 4.9, "video_score": 54.2, "experience_score": 51.7 },
-        "ookla": { "download_mbps": 66.4, "upload_mbps": 6.6 }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 78.3,
+          "upload_mbps": 7.8,
+          "data_type": "estimate"
+        }
       }
     },
     {
@@ -1985,12 +1453,18 @@
       "technology": "NSA",
       "sa_launched": false,
       "fwa": false,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 88.6, "upload_mbps": 8.8, "video_score": 62.4, "experience_score": 59.9 },
-        "ookla": { "download_mbps": 122.1, "upload_mbps": 11.9 }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 88.6,
+          "upload_mbps": 8.8,
+          "data_type": "estimate"
+        }
       }
     },
     {
@@ -1999,119 +1473,854 @@
       "country": "Colombia",
       "country_code": "CO",
       "region": "Latin America",
-      "lat": 4.7110,
+      "lat": 4.711,
       "lon": -74.0721,
       "launch_date": "2022-04-01",
       "technology": "NSA",
       "sa_launched": false,
       "fwa": false,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 72.4, "upload_mbps": 7.2, "video_score": 58.7, "experience_score": 56.2 },
-        "ookla": { "download_mbps": 99.5, "upload_mbps": 9.7 }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 72.4,
+          "upload_mbps": 7.2,
+          "data_type": "estimate"
+        }
       }
     },
     {
-      "id": "ar-claro",
-      "name": "Claro Argentina",
-      "country": "Argentina",
-      "country_code": "AR",
-      "region": "Latin America",
-      "lat": -34.6037,
-      "lon": -58.3816,
-      "launch_date": "2023-07-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 65.7, "upload_mbps": 6.5, "video_score": 57.4, "experience_score": 54.9 },
-        "ookla": { "download_mbps": 90.4, "upload_mbps": 8.9 }
-      }
-    },
-    {
-      "id": "ma-maroctelecom",
-      "name": "Maroc Telecom",
-      "country": "Morocco",
-      "country_code": "MA",
-      "region": "Africa",
-      "lat": 33.9716,
-      "lon": -6.8498,
-      "launch_date": "2022-04-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 68.4, "upload_mbps": 6.8, "video_score": 58.1, "experience_score": 55.6 },
-        "ookla": { "download_mbps": 94.2, "upload_mbps": 9.2 }
-      }
-    },
-    {
-      "id": "gh-mtn",
-      "name": "MTN Ghana",
-      "country": "Ghana",
-      "country_code": "GH",
-      "region": "Africa",
-      "lat": 5.6037,
-      "lon": -0.1870,
-      "launch_date": "2024-03-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 54.7, "upload_mbps": 5.4, "video_score": 56.1, "experience_score": 53.6 },
-        "ookla": { "download_mbps": 75.2, "upload_mbps": 7.4 }
-      }
-    },
-    {
-      "id": "tz-vodacom",
-      "name": "Vodacom Tanzania",
-      "country": "Tanzania",
-      "country_code": "TZ",
-      "region": "Africa",
-      "lat": -6.7924,
-      "lon": 39.2083,
-      "launch_date": "2023-08-01",
-      "technology": "NSA",
-      "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
-      "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
-      "benchmarks": {
-        "opensignal": { "download_mbps": 48.3, "upload_mbps": 4.8, "video_score": 54.1, "experience_score": 51.6 },
-        "ookla": { "download_mbps": 66.1, "upload_mbps": 6.5 }
-      }
-    },
-    {
-      "id": "lu-post",
-      "name": "POST Luxembourg",
-      "country": "Luxembourg",
-      "country_code": "LU",
+      "id": "nl-kpn",
+      "name": "KPN",
+      "country": "Netherlands",
+      "country_code": "NL",
       "region": "Europe",
-      "lat": 49.6117,
-      "lon": 6.1319,
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "launch_date": "2020-07-01",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 148.5,
+          "upload_mbps": 14.2,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "KPN offers 5G FWA service in Netherlands; Europe has highest FWA operator count per GSA June 2026"
+    },
+    {
+      "id": "es-movistar",
+      "name": "Movistar Spain (Telefónica)",
+      "country": "Spain",
+      "country_code": "ES",
+      "region": "Europe",
+      "lat": 40.4168,
+      "lon": -3.7038,
+      "launch_date": "2019-09-10",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": false,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 157.4,
+          "upload_mbps": 15.1,
+          "data_type": "estimate"
+        }
+      }
+    },
+    {
+      "id": "it-tim",
+      "name": "TIM Italy",
+      "country": "Italy",
+      "country_code": "IT",
+      "region": "Europe",
+      "lat": 41.9028,
+      "lon": 12.4964,
+      "launch_date": "2019-06-05",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.6 GHz (Sub-6)",
+        "26 GHz (mmWave)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 143.2,
+          "upload_mbps": 13.8,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "TIM offers FWA products in Italy; Europe has the highest operator count for FWA per GSA June 2026"
+    },
+    {
+      "id": "qa-ooredoo",
+      "name": "Ooredoo Qatar",
+      "country": "Qatar",
+      "country_code": "QA",
+      "region": "Middle East",
+      "lat": 25.2854,
+      "lon": 51.531,
+      "launch_date": "2018-05-14",
+      "launch_note": "Ooredoo Qatar was the world's first commercial 5G network launch",
+      "technology": "NSA+SA",
+      "sa_launched": true,
+      "sa_launch_date": "2021-01-01",
+      "fwa": true,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "28 GHz (mmWave)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-01",
+          "download_mbps": 278.4,
+          "upload_mbps": 33.5,
+          "data_type": "estimate",
+          "note": "OpenSignal Jordan Jan 2025 used as regional proxy; Qatar figures are estimates"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)",
+      "five_g_advanced_note": "Ooredoo Qatar upgraded to Nokia 5G SA core (Feb 2025) and selected Ericsson for advanced features but no commercial 5G-A (Rel-18) service launched. (Source: Ericsson PR, Nokia PR Feb 2025)"
+    },
+    {
+      "id": "kw-zain",
+      "name": "Zain Kuwait",
+      "country": "Kuwait",
+      "country_code": "KW",
+      "region": "Middle East",
+      "lat": 29.3759,
+      "lon": 47.9774,
       "launch_date": "2019-11-01",
       "technology": "NSA",
       "sa_launched": false,
-      "fwa": false,
-      "ntn": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 168.3, "upload_mbps": 16.2, "video_score": 72.3, "experience_score": 69.8 },
-        "ookla": { "download_mbps": 236.5, "upload_mbps": 22.8 }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 215.4,
+          "upload_mbps": 26.1,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
+    },
+    {
+      "id": "th-ais",
+      "name": "AIS Thailand",
+      "country": "Thailand",
+      "country_code": "TH",
+      "region": "Asia Pacific",
+      "lat": 13.7563,
+      "lon": 100.5018,
+      "launch_date": "2020-02-05",
+      "technology": "NSA+SA",
+      "sa_launched": true,
+      "sa_launch_date": "2022-10-01",
+      "fwa": true,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "2.6 GHz (mid)",
+        "3.5 GHz (Sub-6)",
+        "26 GHz (mmWave)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 178.6,
+          "upload_mbps": 17.2,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
+    },
+    {
+      "id": "th-truemove",
+      "name": "True Move H",
+      "country": "Thailand",
+      "country_code": "TH",
+      "region": "Asia Pacific",
+      "lat": 13.78,
+      "lon": 100.52,
+      "launch_date": "2020-02-18",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": false,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "2.6 GHz (mid)",
+        "3.5 GHz (Sub-6)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 163.7,
+          "upload_mbps": 15.8,
+          "data_type": "estimate"
+        }
       }
+    },
+    {
+      "id": "tw-chunghwa",
+      "name": "Chunghwa Telecom",
+      "country": "Taiwan",
+      "country_code": "TW",
+      "region": "Asia Pacific",
+      "lat": 25.033,
+      "lon": 121.5654,
+      "launch_date": "2020-06-30",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "28 GHz (mmWave)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 224.7,
+          "upload_mbps": 27.2,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "Chunghwa Telecom offers 5G FWA service in Taiwan; Asia Pacific accounts for 35% of global FWA CPE volume per GSA June 2026"
+    },
+    {
+      "id": "my-maxis",
+      "name": "Maxis Malaysia",
+      "country": "Malaysia",
+      "country_code": "MY",
+      "region": "Asia Pacific",
+      "lat": 3.139,
+      "lon": 101.6869,
+      "launch_date": "2021-12-18",
+      "technology": "NSA+SA",
+      "sa_launched": true,
+      "sa_launch_date": "2023-09-01",
+      "fwa": true,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 152.4,
+          "upload_mbps": 14.6,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
+    },
+    {
+      "id": "nz-spark",
+      "name": "Spark NZ",
+      "country": "New Zealand",
+      "country_code": "NZ",
+      "region": "Asia Pacific",
+      "lat": -36.8509,
+      "lon": 174.7645,
+      "launch_date": "2019-07-01",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "28 GHz (mmWave)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 148.3,
+          "upload_mbps": 14.2,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
+    },
+    {
+      "id": "za-vodacom",
+      "name": "Vodacom South Africa",
+      "country": "South Africa",
+      "country_code": "ZA",
+      "region": "Africa",
+      "lat": -26.2041,
+      "lon": 28.0473,
+      "launch_date": "2020-05-08",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "28 GHz (mmWave)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 132.7,
+          "upload_mbps": 12.8,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
+    },
+    {
+      "id": "za-mtn",
+      "name": "MTN South Africa",
+      "country": "South Africa",
+      "country_code": "ZA",
+      "region": "Africa",
+      "lat": -26.19,
+      "lon": 28.03,
+      "launch_date": "2020-06-15",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 118.5,
+          "upload_mbps": 11.5,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
+    },
+    {
+      "id": "ng-mtn",
+      "name": "MTN Nigeria",
+      "country": "Nigeria",
+      "country_code": "NG",
+      "region": "Africa",
+      "lat": 6.5244,
+      "lon": 3.3792,
+      "launch_date": "2022-08-15",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 72.6,
+          "upload_mbps": 7.2,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "MTN Nigeria offers FWA broadband service; ME&A region is one of highest FWA operator count regions per GSA June 2026"
+    },
+    {
+      "id": "ke-safaricom",
+      "name": "Safaricom Kenya",
+      "country": "Kenya",
+      "country_code": "KE",
+      "region": "Africa",
+      "lat": -1.2921,
+      "lon": 36.8219,
+      "launch_date": "2022-10-12",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 78.4,
+          "upload_mbps": 7.8,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "Safaricom has launched 5G FWA service in Kenya; ME&A region has highest FWA operator count alongside Europe per GSA June 2026"
+    },
+    {
+      "id": "eg-orange",
+      "name": "Orange Egypt",
+      "country": "Egypt",
+      "country_code": "EG",
+      "region": "Africa",
+      "lat": 30.0444,
+      "lon": 31.2357,
+      "launch_date": "2023-10-01",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 84.3,
+          "upload_mbps": 8.4,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "Orange Egypt offers FWA broadband services; ME&A region leads in FWA operator counts per GSA June 2026"
+    },
+    {
+      "id": "ph-globe",
+      "name": "Globe Telecom",
+      "country": "Philippines",
+      "country_code": "PH",
+      "region": "Asia Pacific",
+      "lat": 14.5995,
+      "lon": 120.9842,
+      "launch_date": "2021-07-22",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "28 GHz (mmWave)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 125.4,
+          "upload_mbps": 12.1,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "Globe Telecom offers 5G FWA (GlobeAtHome) in Philippines; Asia Pacific 35% of global FWA CPE volume per GSA June 2026"
+    },
+    {
+      "id": "id-telkomsel",
+      "name": "Telkomsel Indonesia",
+      "country": "Indonesia",
+      "country_code": "ID",
+      "region": "Asia Pacific",
+      "lat": -6.2088,
+      "lon": 106.8456,
+      "launch_date": "2021-05-17",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "2.3 GHz (mid)",
+        "3.5 GHz (Sub-6)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 88.4,
+          "upload_mbps": 8.7,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "Telkomsel offers 5G FWA (Orbit) home broadband in Indonesia; Asia Pacific 35% of global FWA CPE volume per GSA June 2026"
+    },
+    {
+      "id": "vn-viettel",
+      "name": "Viettel Vietnam",
+      "country": "Vietnam",
+      "country_code": "VN",
+      "region": "Asia Pacific",
+      "lat": 21.0285,
+      "lon": 105.8542,
+      "launch_date": "2023-10-01",
+      "technology": "SA",
+      "sa_launched": true,
+      "sa_launch_date": "2023-10-01",
+      "sa_note": "Vietnam launched 5G as SA from the outset, using domestically developed equipment",
+      "fwa": true,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "2.6 GHz (mid)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 92.7,
+          "upload_mbps": 9.1,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "Viettel offers 5G FWA home broadband in Vietnam; Vietnam launched SA 5G from day one enabling FWA services"
+    },
+    {
+      "id": "hk-csl",
+      "name": "csl (HKT)",
+      "country": "Hong Kong",
+      "country_code": "HK",
+      "region": "Asia Pacific",
+      "lat": 22.3193,
+      "lon": 114.1694,
+      "launch_date": "2020-04-01",
+      "technology": "NSA+SA",
+      "sa_launched": true,
+      "sa_launch_date": "2022-06-01",
+      "fwa": false,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "26 GHz (mmWave)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 298.4,
+          "upload_mbps": 36.1,
+          "data_type": "estimate"
+        }
+      }
+    },
+    {
+      "id": "il-partner",
+      "name": "Partner Communications",
+      "country": "Israel",
+      "country_code": "IL",
+      "region": "Middle East",
+      "lat": 32.0853,
+      "lon": 34.7818,
+      "launch_date": "2021-04-01",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": false,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-01",
+          "download_mbps": 148.6,
+          "upload_mbps": 14.3,
+          "data_type": "estimate",
+          "note": "OpenSignal Jordan Jan 2025 used as regional reference"
+        }
+      }
+    },
+    {
+      "id": "tr-turkcell",
+      "name": "Turkcell",
+      "country": "Turkey",
+      "country_code": "TR",
+      "region": "Europe",
+      "lat": 41.0082,
+      "lon": 28.9784,
+      "launch_date": "2020-07-01",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.6 GHz (Sub-6)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 118.7,
+          "upload_mbps": 11.5,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "Turkcell offers 5G FWA (Superbox) in Turkey; Europe/ME&A lead in FWA operator counts per GSA June 2026"
+    },
+    {
+      "id": "pl-orange",
+      "name": "Orange Poland",
+      "country": "Poland",
+      "country_code": "PL",
+      "region": "Europe",
+      "lat": 52.2297,
+      "lon": 21.0122,
+      "launch_date": "2020-03-01",
+      "technology": "NSA+SA",
+      "sa_launched": true,
+      "sa_launch_date": "2025-08-01",
+      "sa_note": "Play (P4) Poland and Orange Poland moved to SA in 2025 per GSA August 2025 report. Play listed separately.",
+      "fwa": false,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.6 GHz (Sub-6)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 124.8,
+          "upload_mbps": 12.0,
+          "data_type": "estimate"
+        }
+      }
+    },
+    {
+      "id": "at-magenta",
+      "name": "Magenta (T-Mobile Austria)",
+      "country": "Austria",
+      "country_code": "AT",
+      "region": "Europe",
+      "lat": 48.2082,
+      "lon": 16.3738,
+      "launch_date": "2019-08-15",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "26 GHz (mmWave)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 158.7,
+          "upload_mbps": 15.3,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
+    },
+    {
+      "id": "be-proximus",
+      "name": "Proximus Belgium",
+      "country": "Belgium",
+      "country_code": "BE",
+      "region": "Europe",
+      "lat": 50.8503,
+      "lon": 4.3517,
+      "launch_date": "2021-02-12",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.6 GHz (Sub-6)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 147.3,
+          "upload_mbps": 14.1,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "Proximus offers FWA service in Belgium; Europe region leads in FWA operator count per GSA June 2026"
+    },
+    {
+      "id": "ro-orange",
+      "name": "Orange Romania",
+      "country": "Romania",
+      "country_code": "RO",
+      "region": "Europe",
+      "lat": 44.4268,
+      "lon": 26.1025,
+      "launch_date": "2019-05-01",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": false,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 118.4,
+          "upload_mbps": 11.4,
+          "data_type": "estimate"
+        }
+      }
+    },
+    {
+      "id": "pt-nos",
+      "name": "NOS Portugal",
+      "country": "Portugal",
+      "country_code": "PT",
+      "region": "Europe",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "launch_date": "2019-10-01",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": false,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.6 GHz (Sub-6)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 134.7,
+          "upload_mbps": 12.9,
+          "data_type": "estimate"
+        }
+      }
+    },
+    {
+      "id": "fi-dna",
+      "name": "DNA Finland",
+      "country": "Finland",
+      "country_code": "FI",
+      "region": "Europe",
+      "lat": 60.2,
+      "lon": 24.95,
+      "launch_date": "2019-09-01",
+      "technology": "NSA+SA",
+      "sa_launched": true,
+      "sa_launch_date": "2023-06-01",
+      "fwa": true,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)",
+        "26 GHz (mmWave)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 175.3,
+          "upload_mbps": 16.8,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
+    },
+    {
+      "id": "gr-cosmote",
+      "name": "COSMOTE Greece",
+      "country": "Greece",
+      "country_code": "GR",
+      "region": "Europe",
+      "lat": 37.9838,
+      "lon": 23.7275,
+      "launch_date": "2020-10-01",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": false,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 115.3,
+          "upload_mbps": 11.1,
+          "data_type": "estimate"
+        }
+      }
+    },
+    {
+      "id": "dk-tdc",
+      "name": "TDC Denmark",
+      "country": "Denmark",
+      "country_code": "DK",
+      "region": "Europe",
+      "lat": 55.6761,
+      "lon": 12.5683,
+      "launch_date": "2019-12-01",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 162.4,
+          "upload_mbps": 15.6,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
+    },
+    {
+      "id": "ee-telia",
+      "name": "Telia Estonia",
+      "country": "Estonia",
+      "country_code": "EE",
+      "region": "Europe",
+      "lat": 59.437,
+      "lon": 24.7536,
+      "launch_date": "2019-01-01",
+      "launch_note": "Estonia was among the first European countries to launch 5G",
+      "technology": "NSA",
+      "sa_launched": false,
+      "fwa": true,
+      "ntn_status": "no_ntn",
+      "five_g_advanced": false,
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
+      "benchmarks": {
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 152.3,
+          "upload_mbps": 14.6,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
     },
     {
       "id": "ie-three",
@@ -2125,33 +2334,47 @@
       "technology": "NSA",
       "sa_launched": false,
       "fwa": true,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.6 GHz)"],
+      "frequency_bands": [
+        "3.6 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 155.4, "upload_mbps": 14.9, "video_score": 71.0, "experience_score": 68.5 },
-        "ookla": { "download_mbps": 218.1, "upload_mbps": 21.0 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 155.4,
+          "upload_mbps": 14.9,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "5G FWA confirmed from public operator announcements; cross-referenced with GSA FWA Market June 2026 (514 operators in 179 countries)"
     },
     {
-      "id": "is-nova",
-      "name": "Nova Iceland",
-      "country": "Iceland",
-      "country_code": "IS",
-      "region": "Europe",
-      "lat": 64.1265,
-      "lon": -21.8174,
-      "launch_date": "2020-04-01",
+      "id": "ma-maroctelecom",
+      "name": "Maroc Telecom",
+      "country": "Morocco",
+      "country_code": "MA",
+      "region": "Africa",
+      "lat": 33.9716,
+      "lon": -6.8498,
+      "launch_date": "2022-04-01",
       "technology": "NSA",
       "sa_launched": false,
       "fwa": true,
-      "ntn": false,
+      "ntn_status": "no_ntn",
       "five_g_advanced": false,
-      "frequency_bands": ["Sub-6 GHz (3.5 GHz)"],
+      "frequency_bands": [
+        "3.5 GHz (Sub-6)"
+      ],
       "benchmarks": {
-        "opensignal": { "download_mbps": 147.6, "upload_mbps": 14.2, "video_score": 70.0, "experience_score": 67.5 },
-        "ookla": { "download_mbps": 207.2, "upload_mbps": 19.9 }
-      }
+        "opensignal": {
+          "source_date": "2025-Q2",
+          "download_mbps": 68.4,
+          "upload_mbps": 6.8,
+          "data_type": "estimate"
+        }
+      },
+      "fwa_note": "Maroc Telecom offers FWA service in Morocco; ME&A is one of regions with highest FWA operator counts per GSA June 2026"
     }
   ]
 }
