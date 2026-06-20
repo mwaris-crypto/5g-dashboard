@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5G &amp; Beyond Global Deployment Dashboard</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+  <!-- Leaflet MarkerCluster CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css" />
+
+  <style>
+    :root {
+      --bg: #0a0e1a;
+      --surface: #111827;
+      --surface2: #1e2940;
+      --border: #2a3a5c;
+      --text: #e2e8f0;
+      --text-dim: #94a3b8;
+      --accent: #3b82f6;
+      --accent2: #06b6d4;
+      --green: #10b981;
+      --amber: #f59e0b;
+      --red: #ef4444;
+      --purple: #8b5cf6;
+      --pink: #ec4899;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, #0d1b3e 0%, #1a2a5e 50%, #0d1b3e 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-left { display: flex; align-items: center; gap: 14px; }
+
+    .logo {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .header-titles h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #60a5fa, #22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .header-titles p {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    .header-stats {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .stat-chip {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 8px;
+      padding: 6px 14px;
+      min-width: 80px;
+    }
+
+    .stat-chip .num {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent2);
+      line-height: 1;
+    }
+
+    .stat-chip .lbl {
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-size: 0.72rem;
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .live-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.85); }
+    }
+
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filter-bar label { font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    .filter-bar select, .filter-bar input[type=text] {
+      background: var(--surface2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 5px 10px;
+      font-size: 0.8rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .filter-bar select:focus, .filter-bar input[type=text]:focus {
+      border-color: var(--accent);
+    }
+
+    .filter-btn {
+      padding: 5px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      color: var(--text-dim);
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    .filter-divider {
+      width: 1px;
+      height: 22px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .main-wrap {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+      height: calc(100vh - 130px);
+    }
+
+    /* ── MAP ── */
+    #map {
+      flex: 1;
+      min-height: 400px;
+      z-index: 1;
+    }
+
+    /* ── RIGHT PANEL ── */
+    .right-panel {
+      width: 380px;
+      flex-shrink: 0;
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .panel-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .panel-tab {
+      flex: 1;
+      padding: 10px 6px;
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-dim);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .panel-tab.active {
+      color: var(--accent2);
+      border-bottom-color: var(--accent2);
+    }
+
+    .panel-tab:hover:not(.active) {
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .panel-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px;
+    }
+
+    .panel-content::-webkit-scrollbar { width: 5px; }
+    .panel-content::-webkit-scrollbar-track { background: var(--surface); }
+    .panel-content::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* ── TOP 10 TABLE ── */
+    .top10-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .top10-header h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .top10-header .metric-badge {
+      font-size: 0.68rem;
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      color: var(--accent2);
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    .rank-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 10px;
+      border-radius: 8px;
+      margin-bottom: 6px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .rank-row:hover {
+      border-color: var(--accent);
+      background: rgba(59, 130, 246, 0.08);
+    }
+
+    .rank-num {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      width: 22px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .rank-num.gold { color: #fbbf24; }
+    .rank-num.silver { color: #9ca3af; }
+    .rank-num.bronze { color: #b45309; }
+
+    .rank-info { flex: 1; min-width: 0; }
+
+    .rank-name {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .rank-country {
+      font-size: 0.68rem;
+      color: var(--text-dim);
+    }
+
+    .rank-score {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .rank-score .val {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent2);
+      line-height: 1;
+    }
+
+    .rank-score .unit {
+      font-size: 0.62rem;
+      color: var(--text-dim);
+    }
+
+    .speed-bar-wrap {
+      margin-top: 4px;
+      height: 3px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .speed-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+      transition: width 0.8s ease;
+    }
+
+    /* ── OPERATOR DETAIL CARD ── */
+    .detail-card {
+      display: none;
+    }
+
+    .detail-card.active { display: block; }
+
+    .detail-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .detail-flag {
+      font-size: 2.5rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .detail-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .detail-country {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    .detail-region {
+      font-size: 0.68rem;
+      color: var(--accent2);
+      margin-top: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .tag {
+      padding: 3px 9px;
+      border-radius: 12px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .tag-sa { background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); color: var(--green); }
+    .tag-nsa { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); color: var(--amber); }
+    .tag-fwa { background: rgba(139,92,246,0.15); border: 1px solid rgba(139,92,246,0.3); color: var(--purple); }
+    .tag-ntn { background: rgba(236,72,153,0.15); border: 1px solid rgba(236,72,153,0.3); color: var(--pink); }
+    .tag-adv { background: rgba(6,182,212,0.15); border: 1px solid rgba(6,182,212,0.3); color: var(--accent2); }
+    .tag-off { background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text-dim); }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .info-cell {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px;
+    }
+
+    .info-cell .lbl {
+      font-size: 0.63rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 3px;
+    }
+
+    .info-cell .val {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .info-cell .val.highlight { color: var(--accent2); }
+
+    .section-title {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .benchmark-block {
+      margin-bottom: 12px;
+    }
+
+    .benchmark-source {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      padding: 3px 8px;
+      background: var(--surface2);
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .bm-opensignal { color: #f97316; }
+    .bm-rootmetrics { color: #8b5cf6; }
+    .bm-ookla { color: #3b82f6; }
+    .bm-pcmag { color: #10b981; }
+
+    .speed-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .speed-metric {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 7px 5px;
+      text-align: center;
+    }
+
+    .speed-metric .sv {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--accent2);
+      line-height: 1;
+    }
+
+    .speed-metric .sl {
+      font-size: 0.58rem;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    .freq-pill {
+      display: inline-block;
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.2);
+      color: var(--accent);
+      font-size: 0.65rem;
+      padding: 2px 7px;
+      border-radius: 8px;
+      margin: 2px;
+    }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: var(--accent);
+      cursor: pointer;
+      margin-bottom: 14px;
+      padding: 6px 0;
+      border: none;
+      background: none;
+    }
+
+    .back-btn:hover { color: var(--accent2); }
+
+    /* ── CUSTOM MAP POPUP ── */
+    .leaflet-popup-content-wrapper {
+      background: #1a2235 !important;
+      border: 1px solid #2a3a5c !important;
+      border-radius: 10px !important;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important;
+      color: #e2e8f0 !important;
+    }
+
+    .leaflet-popup-tip {
+      background: #1a2235 !important;
+    }
+
+    .leaflet-popup-content {
+      margin: 12px 14px !important;
+      min-width: 220px !important;
+    }
+
+    .popup-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 4px;
+    }
+
+    .popup-meta {
+      font-size: 0.72rem;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
+
+    .popup-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+
+    .popup-tag {
+      padding: 2px 7px;
+      border-radius: 8px;
+      font-size: 0.65rem;
+      font-weight: 600;
+    }
+
+    .popup-speeds {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .popup-speed {
+      background: rgba(255,255,255,0.05);
+      border-radius: 5px;
+      padding: 5px;
+      text-align: center;
+    }
+
+    .popup-speed .ps-v {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #22d3ee;
+    }
+
+    .popup-speed .ps-l {
+      font-size: 0.6rem;
+      color: #64748b;
+    }
+
+    .popup-detail-btn {
+      width: 100%;
+      padding: 6px;
+      border-radius: 6px;
+      background: linear-gradient(90deg, #2563eb, #0891b2);
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .popup-detail-btn:hover { opacity: 0.85; }
+
+    /* ── CUSTOM MARKERS ── */
+    .custom-marker {
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: white;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      cursor: pointer;
+    }
+
+    /* ── EMPTY / LOADING STATES ── */
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      color: var(--text-dim);
+      font-size: 0.82rem;
+      gap: 8px;
+    }
+
+    .empty-state .icon { font-size: 2rem; }
+
+    /* ── LAST UPDATED ── */
+    #last-updated {
+      font-size: 0.65rem;
+      color: var(--text-dim);
+    }
+
+    /* ── LEGEND ── */
+    .map-legend {
+      position: absolute;
+      bottom: 30px;
+      left: 10px;
+      z-index: 900;
+      background: rgba(17, 24, 39, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 0.7rem;
+      color: var(--text);
+      backdrop-filter: blur(4px);
+    }
+
+    .legend-title {
+      font-weight: 700;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 4px;
+    }
+
+    .legend-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── SCROLLBAR ── */
+    html { scrollbar-width: thin; scrollbar-color: #2a3a5c #111827; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .main-wrap { flex-direction: column; height: auto; }
+      #map { height: 55vh; }
+      .right-panel { width: 100%; height: 45vh; border-left: none; border-top: 1px solid var(--border); }
+      .header-stats { display: none; }
+    }
+
+    /* ── SOURCE CREDITS ── */
+    .source-line {
+      font-size: 0.6rem;
+      color: var(--text-dim);
+      text-align: center;
+      padding: 4px 10px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-left">
+    <div class="logo">📡</div>
+    <div class="header-titles">
+      <h1>5G &amp; Beyond Global Deployment Dashboard</h1>
+      <p>Single source of truth for 5G, 5G Advanced &amp; network benchmarks worldwide</p>
+    </div>
+  </div>
+  <div class="header-stats">
+    <div class="stat-chip"><span class="num" id="total-ops">—</span><span class="lbl">Operators</span></div>
+    <div class="stat-chip"><span class="num" id="sa-count">—</span><span class="lbl">SA Launched</span></div>
+    <div class="stat-chip"><span class="num" id="adv-count">—</span><span class="lbl">5G Advanced</span></div>
+    <div class="stat-chip"><span class="num" id="country-count">—</span><span class="lbl">Countries</span></div>
+    <div class="stat-chip"><span class="num" id="fwa-count">—</span><span class="lbl">FWA</span></div>
+  </div>
+  <div>
+    <div class="live-badge">
+      <span class="live-dot"></span> LIVE DATA
+    </div>
+    <div id="last-updated" style="text-align:right;margin-top:4px;"></div>
+  </div>
+</header>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <label>Region</label>
+  <select id="filter-region">
+    <option value="all">All Regions</option>
+    <option value="Asia Pacific">Asia Pacific</option>
+    <option value="Europe">Europe</option>
+    <option value="North America">North America</option>
+    <option value="Middle East">Middle East</option>
+    <option value="Latin America">Latin America</option>
+    <option value="Africa">Africa</option>
+  </select>
+
+  <div class="filter-divider"></div>
+  <label>Technology</label>
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="SA">SA Only</button>
+  <button class="filter-btn" data-filter="NSA">NSA</button>
+  <button class="filter-btn" data-filter="SA+NSA">SA+NSA</button>
+
+  <div class="filter-divider"></div>
+  <button class="filter-btn" id="toggle-fwa">📶 FWA</button>
+  <button class="filter-btn" id="toggle-ntn">🛰 NTN</button>
+  <button class="filter-btn" id="toggle-adv">⚡ 5G-A</button>
+
+  <div class="filter-divider"></div>
+  <label>Search</label>
+  <input type="text" id="search-input" placeholder="Operator or country…" style="width:180px;" />
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="main-wrap">
+
+  <!-- MAP -->
+  <div style="position:relative;flex:1;">
+    <div id="map"></div>
+    <div class="map-legend">
+      <div class="legend-title">Network Type</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#10b981;"></div> Standalone (SA)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#f59e0b;"></div> Non-Standalone (NSA)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#3b82f6;"></div> SA + NSA</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#8b5cf6;"></div> 5G Advanced</div>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="right-panel">
+    <div class="panel-tabs">
+      <div class="panel-tab active" data-tab="download">⬇ Download</div>
+      <div class="panel-tab" data-tab="upload">⬆ Upload</div>
+      <div class="panel-tab" data-tab="video">🎬 Video</div>
+      <div class="panel-tab" data-tab="experience">⭐ Experience</div>
+      <div class="panel-tab" data-tab="detail">📋 Detail</div>
+    </div>
+
+    <div class="panel-content" id="panel-body">
+      <!-- Filled by JS -->
+    </div>
+  </div>
+
+</div>
+
+<div class="source-line">
+  Data sources: GSMA Intelligence · OpenSignal · RootMetrics · Ookla 5G Map · PCMag · Operator press releases &nbsp;|&nbsp; Dashboard auto-updates weekly via GitHub Actions
+</div>
+
+<!-- Leaflet JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<!-- Leaflet MarkerCluster -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
+
+<script>
+// ── CONFIG ──
+const DATA_URL = 'data/operators.json';
+
+// ── STATE ──
+let allOperators = [];
+let filteredOperators = [];
+let map = null;
+let markerLayer = null;
+let activeFilters = { region: 'all', tech: 'all', fwa: false, ntn: false, adv: false, search: '' };
+let currentTab = 'download';
+let selectedOperator = null;
+
+// ── HELPERS ──
+const countryFlags = {
+  KR:'🇰🇷', US:'🇺🇸', CN:'🇨🇳', JP:'🇯🇵', GB:'🇬🇧', DE:'🇩🇪', FR:'🇫🇷', CH:'🇨🇭',
+  SE:'🇸🇪', NO:'🇳🇴', FI:'🇫🇮', SA:'🇸🇦', AE:'🇦🇪', AU:'🇦🇺', SG:'🇸🇬', IN:'🇮🇳',
+  CA:'🇨🇦', BR:'🇧🇷', MX:'🇲🇽', NL:'🇳🇱', ES:'🇪🇸', IT:'🇮🇹', QA:'🇶🇦', BH:'🇧🇭',
+  KW:'🇰🇼', TH:'🇹🇭', PH:'🇵🇭', MY:'🇲🇾', NZ:'🇳🇿', ZA:'🇿🇦', EG:'🇪🇬', NG:'🇳🇬',
+  KE:'🇰🇪', AT:'🇦🇹', BE:'🇧🇪', DK:'🇩🇰', PL:'🇵🇱', RO:'🇷🇴', HU:'🇭🇺', CZ:'🇨🇿',
+  PT:'🇵🇹', GR:'🇬🇷', HR:'🇭🇷', SK:'🇸🇰', OM:'🇴🇲', JO:'🇯🇴', IL:'🇮🇱', ID:'🇮🇩',
+  VN:'🇻🇳', TW:'🇹🇼', HK:'🇭🇰', RU:'🇷🇺', LV:'🇱🇻', LT:'🇱🇹', EE:'🇪🇪', TR:'🇹🇷',
+  PK:'🇵🇰', BD:'🇧🇩', CL:'🇨🇱', CO:'🇨🇴', AR:'🇦🇷', MA:'🇲🇦', GH:'🇬🇭', TZ:'🇹🇿',
+  LU:'🇱🇺', IE:'🇮🇪', IS:'🇮🇸'
+};
+
+function getFlag(code) { return countryFlags[code] || '🏳'; }
+
+function markerColor(op) {
+  if (op.five_g_advanced) return '#8b5cf6';
+  if (op.technology === 'SA') return '#10b981';
+  if (op.technology === 'NSA+SA') return '#3b82f6';
+  return '#f59e0b';
+}
+
+function daysSince(dateStr) {
+  const d = new Date(dateStr);
+  const now = new Date();
+  const diff = Math.floor((now - d) / (1000 * 60 * 60 * 24));
+  const years = Math.floor(diff / 365);
+  const months = Math.floor((diff % 365) / 30);
+  if (years > 0) return `${years}y ${months}m`;
+  return `${months} months`;
+}
+
+function getBestDownload(op) {
+  const bm = op.benchmarks || {};
+  const vals = Object.values(bm).map(b => b.download_mbps).filter(v => v > 0);
+  return vals.length ? Math.max(...vals) : null;
+}
+
+function getBestUpload(op) {
+  const bm = op.benchmarks || {};
+  const vals = Object.values(bm).map(b => b.upload_mbps).filter(v => v > 0);
+  return vals.length ? Math.max(...vals) : null;
+}
+
+function getBestVideo(op) {
+  const bm = op.benchmarks || {};
+  const vals = Object.values(bm).map(b => b.video_score).filter(v => v > 0);
+  return vals.length ? Math.max(...vals) : null;
+}
+
+function getBestExperience(op) {
+  const bm = op.benchmarks || {};
+  const vals = Object.values(bm).map(b => b.experience_score).filter(v => v > 0);
+  return vals.length ? Math.max(...vals) : null;
+}
+
+function getMetricValue(op, tab) {
+  if (tab === 'download') return getBestDownload(op);
+  if (tab === 'upload') return getBestUpload(op);
+  if (tab === 'video') return getBestVideo(op);
+  if (tab === 'experience') return getBestExperience(op);
+  return null;
+}
+
+function getMetricUnit(tab) {
+  if (tab === 'download' || tab === 'upload') return 'Mbps';
+  return '/100';
+}
+
+// ── MAP INIT ──
+function initMap() {
+  map = L.map('map', {
+    center: [20, 0],
+    zoom: 2,
+    zoomControl: true,
+    attributionControl: true
+  });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© OpenStreetMap contributors © CARTO',
+    subdomains: 'abcd',
+    maxZoom: 19
+  }).addTo(map);
+
+  markerLayer = L.markerClusterGroup({
+    maxClusterRadius: 40,
+    iconCreateFunction: function(cluster) {
+      const count = cluster.getChildCount();
+      return L.divIcon({
+        html: `<div style="background:rgba(59,130,246,0.85);border:2px solid rgba(255,255,255,0.3);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:white;box-shadow:0 2px 8px rgba(0,0,0,0.4);">${count}</div>`,
+        className: '',
+        iconSize: [36, 36],
+        iconAnchor: [18, 18]
+      });
+    }
+  });
+  map.addLayer(markerLayer);
+}
+
+// ── RENDER MARKERS ──
+function renderMarkers(operators) {
+  markerLayer.clearLayers();
+
+  operators.forEach(op => {
+    const color = markerColor(op);
+    const flag = getFlag(op.country_code);
+    const dl = getBestDownload(op);
+
+    const icon = L.divIcon({
+      html: `<div class="custom-marker" style="width:30px;height:30px;background:${color};">${flag}</div>`,
+      className: '',
+      iconSize: [30, 30],
+      iconAnchor: [15, 15],
+      popupAnchor: [0, -18]
+    });
+
+    const marker = L.marker([op.lat, op.lon], { icon });
+
+    const techTags = [];
+    if (op.sa_launched) techTags.push(`<span class="popup-tag tag-sa">SA</span>`);
+    if (op.technology.includes('NSA')) techTags.push(`<span class="popup-tag tag-nsa">NSA</span>`);
+    if (op.fwa) techTags.push(`<span class="popup-tag tag-fwa">FWA</span>`);
+    if (op.ntn) techTags.push(`<span class="popup-tag tag-ntn">NTN</span>`);
+    if (op.five_g_advanced) techTags.push(`<span class="popup-tag tag-adv">5G-A</span>`);
+
+    const speedsHtml = dl ? `
+      <div class="popup-speeds">
+        <div class="popup-speed"><div class="ps-v">${dl.toFixed(0)}</div><div class="ps-l">⬇ Best DL (Mbps)</div></div>
+        <div class="popup-speed"><div class="ps-v">${(getBestUpload(op)||0).toFixed(0)}</div><div class="ps-l">⬆ Best UL (Mbps)</div></div>
+      </div>` : '';
+
+    const popupContent = `
+      <div class="popup-name">${flag} ${op.name}</div>
+      <div class="popup-meta">${op.country} · Since ${op.launch_date.slice(0,7)} · ${daysSince(op.launch_date)} ago</div>
+      <div class="popup-tags">${techTags.join('')}</div>
+      ${speedsHtml}
+      <button class="popup-detail-btn" onclick="showDetail('${op.id}')">View Full Details →</button>
+    `;
+
+    marker.bindPopup(popupContent, { maxWidth: 280, className: 'dark-popup' });
+    marker.on('click', () => {
+      selectedOperator = op.id;
+    });
+
+    markerLayer.addLayer(marker);
+  });
+}
+
+// ── LOAD DATA ──
+async function loadData() {
+  try {
+    const res = await fetch(DATA_URL + '?t=' + Date.now());
+    const data = await res.json();
+    allOperators = data.operators;
+
+    // Update header stats
+    const countries = [...new Set(allOperators.map(o => o.country_code))];
+    document.getElementById('total-ops').textContent = allOperators.length;
+    document.getElementById('sa-count').textContent = allOperators.filter(o => o.sa_launched).length;
+    document.getElementById('adv-count').textContent = allOperators.filter(o => o.five_g_advanced).length;
+    document.getElementById('country-count').textContent = countries.length;
+    document.getElementById('fwa-count').textContent = allOperators.filter(o => o.fwa).length;
+    document.getElementById('last-updated').textContent = 'Updated: ' + data.meta.last_updated;
+
+    applyFilters();
+  } catch(e) {
+    console.error('Failed to load operator data:', e);
+    document.getElementById('panel-body').innerHTML = `<div class="empty-state"><div class="icon">⚠️</div><div>Could not load operator data.<br>Run the dashboard from a web server.</div></div>`;
+  }
+}
+
+// ── FILTERS ──
+function applyFilters() {
+  filteredOperators = allOperators.filter(op => {
+    if (activeFilters.region !== 'all' && op.region !== activeFilters.region) return false;
+    if (activeFilters.tech !== 'all') {
+      if (activeFilters.tech === 'SA' && op.technology !== 'SA') return false;
+      if (activeFilters.tech === 'NSA' && !op.technology.startsWith('NSA')) return false;
+      if (activeFilters.tech === 'SA+NSA' && op.technology !== 'NSA+SA') return false;
+    }
+    if (activeFilters.fwa && !op.fwa) return false;
+    if (activeFilters.ntn && !op.ntn) return false;
+    if (activeFilters.adv && !op.five_g_advanced) return false;
+    if (activeFilters.search) {
+      const s = activeFilters.search.toLowerCase();
+      if (!op.name.toLowerCase().includes(s) && !op.country.toLowerCase().includes(s)) return false;
+    }
+    return true;
+  });
+
+  renderMarkers(filteredOperators);
+  renderPanel();
+}
+
+// ── PANEL RENDERING ──
+function renderPanel() {
+  if (currentTab === 'detail' && selectedOperator) {
+    renderDetail(selectedOperator);
+    return;
+  }
+  if (currentTab === 'detail') {
+    currentTab = 'download';
+    document.querySelectorAll('.panel-tab').forEach(t => {
+      t.classList.toggle('active', t.dataset.tab === 'download');
+    });
+  }
+  renderTop10(currentTab);
+}
+
+function renderTop10(tab) {
+  const ops = [...filteredOperators]
+    .map(op => ({ op, val: getMetricValue(op, tab) }))
+    .filter(x => x.val !== null)
+    .sort((a, b) => b.val - a.val)
+    .slice(0, 10);
+
+  const maxVal = ops[0]?.val || 1;
+  const unit = getMetricUnit(tab);
+  const labels = { download: '⬇ Top 10 Download Speed', upload: '⬆ Top 10 Upload Speed', video: '🎬 Top 10 Video Score', experience: '⭐ Top 10 User Experience' };
+
+  if (!ops.length) {
+    document.getElementById('panel-body').innerHTML = `<div class="empty-state"><div class="icon">🔍</div><div>No operators match the current filters.</div></div>`;
+    return;
+  }
+
+  const rows = ops.map((x, i) => {
+    const { op, val } = x;
+    const pct = (val / maxVal * 100).toFixed(0);
+    const flag = getFlag(op.country_code);
+    const rankClass = i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
+    return `
+      <div class="rank-row" onclick="showDetail('${op.id}')">
+        <div class="rank-num ${rankClass}">${i+1}</div>
+        <div class="rank-info">
+          <div class="rank-name">${flag} ${op.name}</div>
+          <div class="rank-country">${op.country}</div>
+          <div class="speed-bar-wrap"><div class="speed-bar" style="width:${pct}%"></div></div>
+        </div>
+        <div class="rank-score">
+          <div class="val">${val % 1 === 0 ? val : val.toFixed(1)}</div>
+          <div class="unit">${unit}</div>
+        </div>
+      </div>`;
+  }).join('');
+
+  document.getElementById('panel-body').innerHTML = `
+    <div class="top10-header">
+      <h3>${labels[tab]}</h3>
+      <span class="metric-badge">${filteredOperators.length} operators</span>
+    </div>
+    ${rows}
+    <div style="margin-top:10px;font-size:0.65rem;color:var(--text-dim);text-align:center;">
+      Click any row to see full operator details
+    </div>
+  `;
+}
+
+function showDetail(id) {
+  selectedOperator = id;
+  currentTab = 'detail';
+  document.querySelectorAll('.panel-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.tab === 'detail');
+  });
+  renderDetail(id);
+
+  // Pan map to operator
+  const op = allOperators.find(o => o.id === id);
+  if (op && map) {
+    map.setView([op.lat, op.lon], 6, { animate: true });
+  }
+}
+
+function renderDetail(id) {
+  const op = allOperators.find(o => o.id === id);
+  if (!op) return;
+
+  const flag = getFlag(op.country_code);
+
+  // Technology tags
+  const tags = [];
+  if (op.sa_launched) tags.push(`<span class="tag tag-sa">✅ Standalone SA</span>`);
+  else tags.push(`<span class="tag tag-off">❌ SA not launched</span>`);
+  if (op.technology.includes('NSA')) tags.push(`<span class="tag tag-nsa">NSA deployed</span>`);
+  if (op.fwa) tags.push(`<span class="tag tag-fwa">📶 FWA</span>`);
+  else tags.push(`<span class="tag tag-off">No FWA</span>`);
+  if (op.ntn) tags.push(`<span class="tag tag-ntn">🛰 NTN</span>`);
+  else tags.push(`<span class="tag tag-off">No NTN</span>`);
+  if (op.five_g_advanced) tags.push(`<span class="tag tag-adv">⚡ 5G Advanced</span>`);
+
+  // Benchmark blocks
+  const bm = op.benchmarks || {};
+  const bmSources = {
+    opensignal: { label: 'OpenSignal', cls: 'bm-opensignal' },
+    rootmetrics: { label: 'RootMetrics', cls: 'bm-rootmetrics' },
+    ookla: { label: 'Ookla Speedtest', cls: 'bm-ookla' },
+    pcmag: { label: 'PCMag', cls: 'bm-pcmag' }
+  };
+
+  let bmHtml = '';
+  for (const [src, meta] of Object.entries(bmSources)) {
+    const data = bm[src];
+    if (!data) continue;
+    const metrics = [];
+    if (data.download_mbps) metrics.push(`<div class="speed-metric"><div class="sv">${data.download_mbps.toFixed(0)}</div><div class="sl">⬇ DL Mbps</div></div>`);
+    if (data.upload_mbps) metrics.push(`<div class="speed-metric"><div class="sv">${data.upload_mbps.toFixed(0)}</div><div class="sl">⬆ UL Mbps</div></div>`);
+    if (data.video_score) metrics.push(`<div class="speed-metric"><div class="sv">${data.video_score.toFixed(1)}</div><div class="sl">🎬 Video</div></div>`);
+    if (data.experience_score) metrics.push(`<div class="speed-metric"><div class="sv">${data.experience_score.toFixed(1)}</div><div class="sl">⭐ UX</div></div>`);
+    if (data.overall_score) metrics.push(`<div class="speed-metric"><div class="sv">${data.overall_score}</div><div class="sl">🏆 Overall</div></div>`);
+
+    if (metrics.length) {
+      bmHtml += `
+        <div class="benchmark-block">
+          <div class="benchmark-source ${meta.cls}">${meta.label}</div>
+          <div class="speed-metrics">${metrics.join('')}</div>
+        </div>`;
+    }
+  }
+
+  // Frequencies
+  const freqPills = (op.frequency_bands || []).map(f => `<span class="freq-pill">${f}</span>`).join('');
+
+  document.getElementById('panel-body').innerHTML = `
+    <button class="back-btn" onclick="goBack()">← Back to Top 10</button>
+
+    <div class="detail-header">
+      <div class="detail-flag">${flag}</div>
+      <div>
+        <div class="detail-name">${op.name}</div>
+        <div class="detail-country">${op.country}</div>
+        <div class="detail-region">${op.region}</div>
+      </div>
+    </div>
+
+    <div class="tag-row">${tags.join('')}</div>
+
+    <div class="info-grid">
+      <div class="info-cell">
+        <div class="lbl">Commercial Launch</div>
+        <div class="val highlight">${op.launch_date}</div>
+      </div>
+      <div class="info-cell">
+        <div class="lbl">Operating For</div>
+        <div class="val highlight">${daysSince(op.launch_date)}</div>
+      </div>
+      <div class="info-cell">
+        <div class="lbl">Technology Mode</div>
+        <div class="val">${op.technology}</div>
+      </div>
+      <div class="info-cell">
+        <div class="lbl">SA Launch Date</div>
+        <div class="val">${op.sa_launch_date || 'N/A'}</div>
+      </div>
+      ${op.five_g_advanced ? `
+      <div class="info-cell">
+        <div class="lbl">5G Advanced Since</div>
+        <div class="val highlight">${op.five_g_advanced_date || 'Active'}</div>
+      </div>` : ''}
+    </div>
+
+    ${freqPills ? `
+    <div class="section-title">Frequency Bands</div>
+    <div style="margin-bottom:14px;">${freqPills}</div>` : ''}
+
+    <div class="section-title">Speed Benchmarks</div>
+    ${bmHtml || '<div style="font-size:0.75rem;color:var(--text-dim);margin-bottom:14px;">No benchmark data available</div>'}
+  `;
+}
+
+function goBack() {
+  selectedOperator = null;
+  currentTab = 'download';
+  document.querySelectorAll('.panel-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.tab === 'download');
+  });
+  renderTop10('download');
+}
+
+// ── EVENT LISTENERS ──
+document.addEventListener('DOMContentLoaded', () => {
+  initMap();
+  loadData();
+
+  // Tab clicks
+  document.querySelectorAll('.panel-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      currentTab = tab.dataset.tab;
+      document.querySelectorAll('.panel-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      if (currentTab !== 'detail') selectedOperator = null;
+      renderPanel();
+    });
+  });
+
+  // Region filter
+  document.getElementById('filter-region').addEventListener('change', e => {
+    activeFilters.region = e.target.value;
+    applyFilters();
+  });
+
+  // Tech filter buttons
+  document.querySelectorAll('[data-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilters.tech = btn.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  // Toggle FWA / NTN / 5G-A
+  document.getElementById('toggle-fwa').addEventListener('click', function() {
+    activeFilters.fwa = !activeFilters.fwa;
+    this.classList.toggle('active', activeFilters.fwa);
+    applyFilters();
+  });
+
+  document.getElementById('toggle-ntn').addEventListener('click', function() {
+    activeFilters.ntn = !activeFilters.ntn;
+    this.classList.toggle('active', activeFilters.ntn);
+    applyFilters();
+  });
+
+  document.getElementById('toggle-adv').addEventListener('click', function() {
+    activeFilters.adv = !activeFilters.adv;
+    this.classList.toggle('active', activeFilters.adv);
+    applyFilters();
+  });
+
+  // Search
+  let searchTimer;
+  document.getElementById('search-input').addEventListener('input', e => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      activeFilters.search = e.target.value.trim();
+      applyFilters();
+    }, 250);
+  });
+
+  // Auto-refresh every 5 minutes
+  setInterval(loadData, 5 * 60 * 1000);
+});
+</script>
+</body>
+</html>
